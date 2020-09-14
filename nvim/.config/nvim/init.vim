@@ -21,6 +21,7 @@ Plug 'neovim/nvim-lspconfig'
 Plug 'nvim-lua/completion-nvim'
 Plug 'alok/notational-fzf-vim'
 Plug 'voldikss/vim-floaterm'
+Plug 'wincent/corpus'
 call plug#end()
 
 set t_Co=256
