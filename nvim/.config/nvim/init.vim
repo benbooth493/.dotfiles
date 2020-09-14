@@ -17,8 +17,7 @@ Plug 'tpope/vim-repeat'
 Plug 'hashivim/vim-terraform'
 Plug 'jiangmiao/auto-pairs'
 Plug 'phanviet/vim-monokai-pro'
-Plug 'neovim/nvim-lspconfig'
-Plug 'nvim-lua/completion-nvim'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'alok/notational-fzf-vim'
 Plug 'voldikss/vim-floaterm'
 Plug 'wincent/corpus'
@@ -75,8 +74,6 @@ set whichwrap+=<,>,h,l
 set wildmenu
 set wrap
 
-au FocusGained,BufEnter * checktime
-
 let mapleader = " "
 
 let g:lightline = {
@@ -84,12 +81,6 @@ let g:lightline = {
     \ }
 
 let g:tmuxline_powerline_separators = 0
-
-lua require'nvim_lsp'.gopls.setup{ on_attach = require'completion'.on_attach }
-lua require'nvim_lsp'.terraformls.setup{ on_attach = require'completion'.on_attach }
-
-set completeopt=menuone,noinsert,noselect
-let g:completion_matching_strategy = ['exact', 'substring', 'fuzzy']
 
 let g:fzf_layout = {
     \ 'up':'~90%',

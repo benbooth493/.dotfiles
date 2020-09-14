@@ -64,8 +64,6 @@ shell:
   program: /usr/local/bin/zsh
   args:
     - --login
-    - -c
-    - "tmux attach || tmux"
 
 key_bindings:
   - { key: Key0,   mods: Command,         action: ResetFontSize    }
