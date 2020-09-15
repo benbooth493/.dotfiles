@@ -78,7 +78,7 @@ set whichwrap+=<,>,h,l
 set wildmenu
 set wrap
 
-let mapleader = " "
+let mapleader = ","
 
 let g:lightline = {
     \ 'colorscheme': 'monokai_pro',
@@ -169,11 +169,7 @@ function! s:check_back_space() abort
 endfunction
 
 " Use <c-space> to trigger completion.
-if has('nvim')
-  inoremap <silent><expr> <c-space> coc#refresh()
-else
-  inoremap <silent><expr> <c-@> coc#refresh()
-endif
+inoremap <silent><expr> <c-space> coc#refresh()
 
 if exists('*complete_info')
   inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
