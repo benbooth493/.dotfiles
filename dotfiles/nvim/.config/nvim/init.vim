@@ -78,6 +78,9 @@ set whichwrap+=<,>,h,l
 set wildmenu
 set wrap
 
+" Autocorrent typos
+iabbrev flase false
+
 let mapleader = ","
 
 let g:lightline = {
