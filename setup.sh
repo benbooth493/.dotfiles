@@ -1,5 +1,6 @@
 #!/bin/bash
 
 pushd ./dotfiles
-stow --restow --target ~/ *
+stow --stow --target ~/ *
 popd
+
