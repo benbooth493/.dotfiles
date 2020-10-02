@@ -71,7 +71,7 @@ set splitright
 set t_vb=
 set tabstop=4
 set tm=500
-set undodir=$HOME"/.undodir"
+set undodir=~/.undo//
 set undofile
 set updatetime=300
 set whichwrap+=<,>,h,l
