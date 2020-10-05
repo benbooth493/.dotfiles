@@ -18,9 +18,7 @@ Plug 'hashivim/vim-terraform'
 Plug 'jiangmiao/auto-pairs'
 Plug 'phanviet/vim-monokai-pro'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'alok/notational-fzf-vim'
-Plug 'voldikss/vim-floaterm'
-Plug 'wincent/corpus'
+Plug 'easymotion/vim-easymotion'
 call plug#end()
 
 set t_Co=256
@@ -111,13 +109,6 @@ let g:go_imports_autosave = 1
 let g:terraform_align=1
 let g:terraform_fmt_on_save=1
 
-let g:nv_search_paths = ['~/notes']
-
-let g:floaterm_width = 0.95
-let g:floaterm_height = 0.6
-let g:floaterm_position = 'bottom'
-let g:floaterm_autoclose = 1
-
 map <C-j> <C-W>j
 map <C-k> <C-W>k
 map <C-h> <C-W>h
@@ -130,23 +121,6 @@ nnoremap <Leader>r :Rg<CR>
 nnoremap <Leader>gi :GoImports<CR>
 nnoremap <Leader>gie :GoIfErr<CR>
 nnoremap <Leader>gl :GoMetaLinter<CR>
-
-" notational fzf
-nnoremap <Leader>n :NV<CR>
-
-lua <<
-    CorpusDirectories = {
-        ['~/notes'] = {
-            autocommit = true,
-            autoreference = 1,
-            autotitle = 1,
-            base = './',
-            transform = 'local',
-        }
-    }
-.
-
-nnoremap <Leader>t :FloatermNew<CR>
 
 au! BufNewFile,BufReadPost *.{yaml,yml} set filetype=yaml foldmethod=indent
 autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
