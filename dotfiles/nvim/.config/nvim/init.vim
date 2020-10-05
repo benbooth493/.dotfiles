@@ -87,6 +87,16 @@ let g:lightline = {
 
 let g:tmuxline_powerline_separators = 0
 
+
+let g:terraform_align=1
+let g:terraform_fmt_on_save=1
+
+map <C-j> <C-W>j
+map <C-k> <C-W>k
+map <C-h> <C-W>h
+map <C-l> <C-W>l
+
+" fzf
 let g:fzf_layout = {
     \ 'up':'~90%',
     \ 'window': {
@@ -101,26 +111,17 @@ let g:fzf_layout = {
 
 let g:fzf_tags_command = 'ctags -R'
 
-let g:go_highlight_functions = 1
-let g:go_template_use_pkg = 0
-let g:go_metalinter_autosave = 0
-let g:go_imports_autosave = 1
-
-let g:terraform_align=1
-let g:terraform_fmt_on_save=1
-
-map <C-j> <C-W>j
-map <C-k> <C-W>k
-map <C-h> <C-W>h
-map <C-l> <C-W>l
-
-" fzf
 nnoremap <Leader>p :Files<CR>
 nnoremap <Leader>r :Rg<CR>
 
 nnoremap <Leader>gi :GoImports<CR>
 nnoremap <Leader>gie :GoIfErr<CR>
 nnoremap <Leader>gl :GoMetaLinter<CR>
+
+let g:go_highlight_functions = 1
+let g:go_template_use_pkg = 0
+let g:go_metalinter_autosave = 0
+let g:go_imports_autosave = 1
 
 au! BufNewFile,BufReadPost *.{yaml,yml} set filetype=yaml foldmethod=indent
 autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
