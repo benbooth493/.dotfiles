@@ -17,3 +17,9 @@ disabled = true
 [python]
 disabled = true
 
+[golang]
+disabled = true
+
+[cmd_duration]
+disabled = true
+
