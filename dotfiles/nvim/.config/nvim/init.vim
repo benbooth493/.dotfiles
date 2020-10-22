@@ -126,10 +126,6 @@ let g:go_template_use_pkg = 0
 let g:go_metalinter_autosave = 0
 let g:go_imports_autosave = 1
 
-" Quickly insert a line without entering INSERT mode.
-nnoremap <Leader>o o<Esc>
-nnoremap <Leader>O O<Esc>
-
 au! BufNewFile,BufReadPost *.{yaml,yml} set filetype=yaml foldmethod=indent
 autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
 
