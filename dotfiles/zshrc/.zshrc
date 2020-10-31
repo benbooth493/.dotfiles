@@ -15,8 +15,6 @@ alias vim="nvim"
 alias tree="tree -C"
 alias cat="bat --plain --pager=never"
 
-source $HOME/Library/Preferences/org.dystroy.broot/launcher/bash/br
-
 [[ -s "$HOME/.gvm/scripts/gvm" ]] && source "$HOME/.gvm/scripts/gvm"
 
 export STARSHIP_CONFIG=$HOME/.config/starship.toml

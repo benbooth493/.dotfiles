@@ -137,3 +137,8 @@ command! Acc call fzf#run({'source': 'dazn aws ls', 'sink': function('s:sink')})
 
 nnoremap <Leader>da :Acc<CR>
 
+command! -nargs=* T split | terminal <args>
+command! -nargs=* VT vsplit | terminal <args>
+
+nnoremap <Leader>fi gg=G<CR>
+
