@@ -3,8 +3,9 @@ filetype indent plugin on
 let g:python3_host_prog='/usr/local/bin/python3'
 
 call plug#begin('~/.config/nvim/plugged')
+Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'edkolev/tmuxline.vim'
-Plug 'ryanoasis/vim-devicons'
+Plug 'kyazdani42/nvim-web-devicons'
 Plug 'itchyny/lightline.vim'
 Plug 'scrooloose/nerdcommenter'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
@@ -17,13 +18,12 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 Plug 'hashivim/vim-terraform'
 Plug 'jiangmiao/auto-pairs'
-Plug 'phanviet/vim-monokai-pro'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'easymotion/vim-easymotion'
 call plug#end()
 
 set t_Co=256
-colorscheme monokai_pro
+colorscheme dracula
 syntax enable
 hi LineNr ctermbg=NONE
 
@@ -85,11 +85,10 @@ iabbrev flase false
 let mapleader = ","
 
 let g:lightline = {
-    \ 'colorscheme': 'monokai_pro',
+    \ 'colorscheme': 'dracula',
     \ }
 
 let g:tmuxline_powerline_separators = 0
-
 
 let g:terraform_align=1
 let g:terraform_fmt_on_save=1
