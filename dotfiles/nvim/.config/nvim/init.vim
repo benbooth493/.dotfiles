@@ -81,6 +81,7 @@ source $HOME/.config/nvim/coc.vim
 
 " Autocorrent typos
 iabbrev flase false
+iabbrev vaule value
 
 let mapleader = ","
 
