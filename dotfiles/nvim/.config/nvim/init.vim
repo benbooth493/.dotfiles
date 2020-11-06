@@ -60,7 +60,7 @@ set shortmess+=c
 set showbreak=↪\
 set showmatch
 set si
-set signcolumn=number
+set signcolumn=yes
 set smartcase
 set smarttab
 set so=10
@@ -72,7 +72,7 @@ set tabstop=4
 set tm=500
 set undodir=~/.undo//
 set undofile
-set updatetime=300
+set updatetime=100
 set whichwrap+=<,>,h,l
 set wildmenu
 set wrap
