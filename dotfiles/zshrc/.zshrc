@@ -14,6 +14,7 @@ fpath=($fpath $HOME/.zsh/completion)
 alias vim="nvim"
 alias tree="tree -C"
 alias cat="bat --plain --pager=never"
+alias k="kubectl"
 
 [[ -s "$HOME/.gvm/scripts/gvm" ]] && source "$HOME/.gvm/scripts/gvm"
 
