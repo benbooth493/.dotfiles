@@ -1,0 +1,10 @@
+yabai -m config layout bsp
+# set mouse interaction modifier key (default: fn)
+yabai -m config mouse_modifier fn
+# set modifier + left-click drag to resize window (default: move)
+yabai -m config mouse_action1 move
+# set modifier + right-click drag to resize window (default: resize)
+yabai -m config mouse_action2 resize
+yabai -m config window_shadow off
+yabai -m config auto_balance off
+
