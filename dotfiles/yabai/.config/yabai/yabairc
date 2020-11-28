@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
 
 # Variables
-gaps_top="10"
-gaps_bottom="10"
-gaps_left="10"
-gaps_right="10"
-gaps_inner="10"
+gaps_top="15"
+gaps_bottom="15"
+gaps_left="15"
+gaps_right="15"
+gaps_inner="15"
 
 # Tiling settings
 yabai -m config layout                      bsp
