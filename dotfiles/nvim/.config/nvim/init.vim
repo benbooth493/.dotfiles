@@ -1,8 +1,12 @@
 filetype indent plugin on
-
-let g:python3_host_prog='/usr/local/bin/python3'
+syntax enable
 
 let mapleader = " "
+
+" Possibly more ergonomic than mapping ESC to CAPSLOCK
+inoremap jk <ESC>
+
+let g:python3_host_prog='/usr/local/bin/python3'
 
 call plug#begin('~/.config/nvim/plugged')
 
@@ -24,15 +28,15 @@ Plug 'hashivim/vim-terraform'
 Plug 'drewtempelmeyer/palenight.vim'
 Plug 'rstacruz/vim-closer'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'aonemd/kuroi.vim'
 
 call plug#end()
 
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
-
 set t_Co=256
 set background=dark
-colorscheme palenight
-syntax enable
+"colorscheme palenight
+colorscheme kuroi
 hi LineNr ctermbg=NONE
 
 set ai
