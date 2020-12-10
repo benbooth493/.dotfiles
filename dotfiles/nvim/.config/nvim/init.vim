@@ -14,7 +14,6 @@ Plug 'neovim/nvim-lspconfig'
 Plug 'nvim-lua/completion-nvim'
 
 Plug 'rbong/vim-crystalline'
-Plug 'edkolev/tmuxline.vim'
 Plug 'aonemd/kuroi.vim'
 Plug 'kyazdani42/nvim-web-devicons'
 
@@ -171,8 +170,6 @@ EOF
 " Use <Tab> and <S-Tab> to navigate through popup menu
 inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-
-let g:tmuxline_powerline_separators = 0
 
 let g:completion_confirm_key = "\<C-y>"
 let g:completion_matching_strategy_list = ['exact', 'substring', 'fuzzy']
