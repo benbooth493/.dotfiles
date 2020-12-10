@@ -139,6 +139,8 @@ key_bindings:
   - { key: N,                           mode: Vi, action: SearchNext              }
   - { key: N,      mods: Shift,         mode: Vi, action: SearchPrevious          }
 
+  - { key: X,      mods: Command,       chars: "\x1bx"                            }
+
 mouse:
   double_click: { threshold: 300 }
   tripple_click: { threshold: 300 }
@@ -158,7 +160,7 @@ debug:
 colors:
   # Default colors
   primary:
-    background: '0x282a36'
+    background: '0x1a1a1a'
     foreground: '0xf8f8f2'
 
     # Bright and dim foreground colors
