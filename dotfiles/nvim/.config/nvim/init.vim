@@ -2,11 +2,15 @@ filetype indent plugin on
 
 let g:python3_host_prog='/usr/local/bin/python3'
 
+let mapleader = " "
+
 call plug#begin('~/.config/nvim/plugged')
-Plug 'dracula/vim', { 'as': 'dracula' }
+
+Plug 'neovim/nvim-lspconfig'
+Plug 'nvim-lua/completion-nvim'
 Plug 'edkolev/tmuxline.vim'
-Plug 'kyazdani42/nvim-web-devicons'
 Plug 'itchyny/lightline.vim'
+Plug 'kyazdani42/nvim-web-devicons'
 Plug 'scrooloose/nerdcommenter'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
@@ -17,15 +21,17 @@ Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 Plug 'hashivim/vim-terraform'
-Plug 'jiangmiao/auto-pairs'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'easymotion/vim-easymotion'
-Plug 'dart-lang/dart-vim-plugin'
-Plug 'thosakwe/vim-flutter'
+Plug 'drewtempelmeyer/palenight.vim'
+Plug 'rstacruz/vim-closer'
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+
 call plug#end()
 
+let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+
 set t_Co=256
-colorscheme dracula
+set background=dark
+colorscheme palenight
 syntax enable
 hi LineNr ctermbg=NONE
 
@@ -34,6 +40,7 @@ set autoread
 set backspace=eol,start,indent
 set cmdheight=2
 set clipboard=unnamed
+set cot=menuone,noinsert,noselect
 set encoding=utf8
 set expandtab
 set ffs=unix,dos,mac
@@ -79,22 +86,59 @@ set whichwrap+=<,>,h,l
 set wildmenu
 set wrap
 
-source $HOME/.config/nvim/coc.vim
+autocmd TermOpen * setlocal nonumber norelativenumber
 
 " Autocorrent typos
 iabbrev flase false
 iabbrev vaule value
 
-let mapleader = ","
+:lua <<EOF
+require'nvim-treesitter.configs'.setup {
+  ensure_installed = "all",
+
+  highlight = { enable = true },
+  indent = { enable = true },
+  incremental_selection = { enable = true },
+  textobjects = { enable = true },
+}
+EOF
+
+:lua <<EOF
+  local lspconfig = require('lspconfig')
+
+  local on_attach = function(_, bufnr)
+    require('completion').on_attach()
+  end
+
+  local servers = {
+    'jsonls',
+    'vimls',
+    'pyls_ms',
+    'gopls',
+  }
+
+  for _, lsp in ipairs(servers) do
+    lspconfig[lsp].setup{
+      on_attach = on_attach,
+    }
+  end
+EOF
+
+" Use <Tab> and <S-Tab> to navigate through popup menu
+inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
 let g:lightline = {
-    \ 'colorscheme': 'dracula',
+    \ 'colorscheme': 'palenight',
     \ }
 
 let g:tmuxline_powerline_separators = 0
 
-let g:terraform_align=1
-let g:terraform_fmt_on_save=1
+let g:completion_confirm_key = "\<C-y>"
+let g:completion_matching_strategy_list = ['exact', 'substring', 'fuzzy']
+
+let g:terraform_align = 1
+let g:terraform_fmt_on_save = 1
 
 map <C-j> <C-W>j
 map <C-k> <C-W>k
@@ -131,16 +175,8 @@ let g:go_imports_autosave = 1
 au! BufNewFile,BufReadPost *.{yaml,yml} set filetype=yaml foldmethod=indent
 autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
 
-function! s:sink(line)
-  put=split(trim(a:line), '\s\+')[0]
-endfunction
-
-command! Acc call fzf#run({'source': 'dazn aws ls', 'sink': function('s:sink')})
-
-nnoremap <Leader>da :Acc<CR>
-
 command! -nargs=* T split | terminal <args>
 command! -nargs=* VT vsplit | terminal <args>
 
-nnoremap <Leader>fi gg=G<CR>
+autocmd BufEnter * lua require'completion'.on_attach()
 
