@@ -104,7 +104,6 @@ set noshowmode
 set noswapfile
 set novisualbell
 set nowb
-set nowrap
 set nowritebackup
 set number relativenumber
 set shiftwidth=4
