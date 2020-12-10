@@ -12,32 +12,72 @@ call plug#begin('~/.config/nvim/plugged')
 
 Plug 'neovim/nvim-lspconfig'
 Plug 'nvim-lua/completion-nvim'
+
+Plug 'rbong/vim-crystalline'
 Plug 'edkolev/tmuxline.vim'
-Plug 'itchyny/lightline.vim'
+Plug 'aonemd/kuroi.vim'
 Plug 'kyazdani42/nvim-web-devicons'
-Plug 'scrooloose/nerdcommenter'
+
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
+
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-rhubarb'
+
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+Plug 'hashivim/vim-terraform'
+
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
-Plug 'hashivim/vim-terraform'
-Plug 'drewtempelmeyer/palenight.vim'
 Plug 'rstacruz/vim-closer'
-Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-Plug 'aonemd/kuroi.vim'
+Plug 'AndrewRadev/splitjoin.vim'
+
+Plug 'tweekmonster/startuptime.vim'
 
 call plug#end()
 
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 set t_Co=256
 set background=dark
-"colorscheme palenight
 colorscheme kuroi
 hi LineNr ctermbg=NONE
+let &colorcolumn="80,".join(range(120,999),",")
+
+function! StatusLine(current, width)
+  let l:s = ''
+
+  if a:current
+    let l:s .= crystalline#mode() . crystalline#right_mode_sep('')
+  else
+    let l:s .= '%#CrystallineInactive#'
+  endif
+  let l:s .= ' %f%h%w%m%r '
+  if a:current
+    let l:s .= crystalline#right_sep('', 'Fill') . ' %{fugitive#head()}'
+  endif
+
+  let l:s .= '%='
+  if a:current
+    let l:s .= crystalline#left_sep('', 'Fill') . ' %{&paste ?"PASTE ":""}%{&spell?"SPELL ":""}'
+    let l:s .= crystalline#left_mode_sep('')
+  endif
+  if a:width > 80
+    let l:s .= ' ℓ %l/%L 𝑐 %c%V %P '
+  else
+    let l:s .= ' '
+  endif
+
+  return l:s
+endfunction
+
+let g:crystalline_enable_sep = 0
+let g:crystalline_statusline_fn = 'StatusLine'
+let g:crystalline_theme = 'default'
+
+set guioptions-=e
+set laststatus=2
 
 set ai
 set autoread
@@ -131,10 +171,6 @@ EOF
 " Use <Tab> and <S-Tab> to navigate through popup menu
 inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-
-let g:lightline = {
-    \ 'colorscheme': 'palenight',
-    \ }
 
 let g:tmuxline_powerline_separators = 0
 
