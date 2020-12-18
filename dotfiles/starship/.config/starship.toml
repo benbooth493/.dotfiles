@@ -23,3 +23,6 @@ disabled = true
 [cmd_duration]
 disabled = true
 
+[dart]
+disabled = true
+

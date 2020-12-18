@@ -22,11 +22,17 @@ Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 
+Plug 'nvim-lua/popup.nvim'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim'
+
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
 
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'hashivim/vim-terraform'
+Plug 'dart-lang/dart-vim-plugin'
+Plug 'thosakwe/vim-flutter'
 
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
@@ -128,6 +134,11 @@ set whichwrap+=<,>,h,l
 set wildmenu
 set wrap
 
+nnoremap <leader>ff <cmd>Telescope find_files<cr>
+nnoremap <leader>fg <cmd>Telescope live_grep<cr>
+nnoremap <leader>fb <cmd>Telescope buffers<cr>
+nnoremap <leader>fh <cmd>Telescope help_tags<cr>
+
 autocmd TermOpen * setlocal nonumber norelativenumber
 
 " Autocorrent typos
@@ -157,6 +168,7 @@ EOF
     'vimls',
     'pyls_ms',
     'gopls',
+    'dartls',
   }
 
   for _, lsp in ipairs(servers) do
@@ -175,6 +187,10 @@ let g:completion_matching_strategy_list = ['exact', 'substring', 'fuzzy']
 
 let g:terraform_align = 1
 let g:terraform_fmt_on_save = 1
+
+let g:dart_style_guide = 2
+let g:dart_format_on_save = 1
+let dart_html_in_strings=v:true
 
 map <C-j> <C-W>j
 map <C-k> <C-W>k
