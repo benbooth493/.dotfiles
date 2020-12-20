@@ -1,3 +1,7 @@
+if &compatible
+    set nocompatible
+endif
+
 filetype indent plugin on
 syntax enable
 
@@ -8,40 +12,43 @@ inoremap jk <ESC>
 
 let g:python3_host_prog='/usr/local/bin/python3'
 
-call plug#begin('~/.config/nvim/plugged')
+function! s:packager_init(packager) abort
+    call a:packager.add('kristijanhusak/vim-packager', { 'type': 'opt' })
 
-Plug 'neovim/nvim-lspconfig'
-Plug 'nvim-lua/completion-nvim'
+    call a:packager.add('neovim/nvim-lspconfig')
+    call a:packager.add('nvim-lua/completion-nvim')
 
-Plug 'rbong/vim-crystalline'
-Plug 'aonemd/kuroi.vim'
-Plug 'kyazdani42/nvim-web-devicons'
+    call a:packager.add('rbong/vim-crystalline')
+    call a:packager.add('aonemd/kuroi.vim')
+    call a:packager.add('kyazdani42/nvim-web-devicons')
 
-Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+    call a:packager.add('nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'})
 
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'junegunn/fzf.vim'
+    call a:packager.add('junegunn/fzf', { 'do': { -> fzf#install() } })
+    call a:packager.add('junegunn/fzf.vim')
 
-Plug 'nvim-lua/popup.nvim'
-Plug 'nvim-lua/plenary.nvim'
-Plug 'nvim-telescope/telescope.nvim'
+    call a:packager.add('nvim-lua/popup.nvim')
+    call a:packager.add('nvim-lua/plenary.nvim')
+    call a:packager.add('nvim-telescope/telescope.nvim')
 
-Plug 'airblade/vim-gitgutter'
-Plug 'tpope/vim-fugitive'
+    call a:packager.add('airblade/vim-gitgutter')
+    call a:packager.add('tpope/vim-fugitive')
 
-Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
-Plug 'hashivim/vim-terraform'
-Plug 'dart-lang/dart-vim-plugin'
-Plug 'thosakwe/vim-flutter'
+    call a:packager.add('fatih/vim-go', { 'do': ':GoUpdateBinaries' })
+    call a:packager.add('hashivim/vim-terraform')
+    call a:packager.add('dart-lang/dart-vim-plugin')
+    call a:packager.add('thosakwe/vim-flutter')
 
-Plug 'tpope/vim-surround'
-Plug 'tpope/vim-repeat'
-Plug 'rstacruz/vim-closer'
-Plug 'AndrewRadev/splitjoin.vim'
+    call a:packager.add('tpope/vim-surround')
+    call a:packager.add('tpope/vim-repeat')
+    call a:packager.add('rstacruz/vim-closer')
+    call a:packager.add('AndrewRadev/splitjoin.vim')
 
-Plug 'tweekmonster/startuptime.vim'
+    call a:packager.add('tweekmonster/startuptime.vim')
+endfunction
 
-call plug#end()
+packadd vim-packager
+call packager#setup(function('s:packager_init'))
 
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 set t_Co=256
