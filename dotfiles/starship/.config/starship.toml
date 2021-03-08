@@ -6,7 +6,11 @@ add_newline = false
 disabled = true
 
 [kubernetes]
-disabled = true
+style = "cyan dimmed"
+format = '[$symbol$context]($style) in '
+disabled = false
+[kubernetes.context_aliases]
+"arn:aws:eks:eu-central-1:317566953396:cluster/mesh-eks-gloo-dev-euc1" = "transit-dev-euc1"
 
 [terraform]
 disabled = true
