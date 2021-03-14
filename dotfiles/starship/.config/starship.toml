@@ -6,17 +6,24 @@ add_newline = false
 disabled = true
 
 [kubernetes]
+disabled = false
 style = "cyan dimmed"
 format = '[$symbol$context]($style) in '
-disabled = false
+
 [kubernetes.context_aliases]
-"arn:aws:eks:eu-central-1:317566953396:cluster/mesh-eks-gloo-dev-euc1" = "transit-dev-euc1"
+"arn:aws:eks:eu-central-1:317566953396:cluster/mesh-eks-euc1-dev" = "transit-dev-euc1-dev"
 
 [terraform]
 disabled = true
 
 [aws]
 disabled = true
+
+[aws.region_aliases]
+ap-northeast-1 = "apn1"
+eu-central-1 = "euc1"
+us-east-1 = "use1"
+us-west-2 = "usw2"
 
 [python]
 disabled = true

@@ -1,14 +1,11 @@
-export ZSH="$HOME/.oh-my-zsh"
-plugins=(
-    poetry
-)
-
-source $ZSH/oh-my-zsh.sh
-
 [ -f $HOME/.zshrc.vars ] && source $HOME/.zshrc.vars
+
+autoload -Uz compinit
+compinit
 
 unsetopt share_history
 
+source <(kubectl completion zsh)
 fpath=($fpath $HOME/.zsh/completion)
 
 [ -f $HOME/.fzf.zsh ] && source $HOME/.fzf.zsh
@@ -27,7 +24,6 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"
 [ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && . "/usr/local/opt/nvm/etc/bash_completion.d/nvm"
 
-
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 PATH="/Users/ben.booth/perl5/bin${PATH:+:${PATH}}"; export PATH;
@@ -37,3 +33,4 @@ PERL_MB_OPT="--install_base \"/Users/ben.booth/perl5\""; export PERL_MB_OPT;
 PERL_MM_OPT="INSTALL_BASE=/Users/ben.booth/perl5"; export PERL_MM_OPT;
 
 export PATH="$HOME/.poetry/bin:$PATH"
+

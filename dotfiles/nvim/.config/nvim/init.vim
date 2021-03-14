@@ -17,8 +17,8 @@ call plug#begin('~/.vim/plugged')
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 Plug 'rbong/vim-crystalline'
-Plug 'aonemd/kuroi.vim'
 Plug 'kyazdani42/nvim-web-devicons'
+Plug 'dracula/vim', { 'as': 'dracula' }
 
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
@@ -40,7 +40,7 @@ call plug#end()
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 set t_Co=256
 set background=dark
-colorscheme kuroi
+colorscheme dracula
 hi LineNr ctermbg=NONE
 let &colorcolumn="80,".join(range(120,999),",")
 
@@ -157,7 +157,7 @@ let g:fzf_layout = {
 
 let g:fzf_tags_command = 'ctags -R'
 
-nnoremap <Leader>p :Files<CR>
+nnoremap <Leader>, :Files<CR>
 nnoremap <Leader>r :Rg<CR>
 
 nnoremap <Leader>gi :GoImports<CR>
@@ -274,7 +274,7 @@ command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organize
 " Add (Neo)Vim's native statusline support.
 " NOTE: Please see `:h coc-status` for integrations with external plugins that
 " provide custom statusline: lightline.vim, vim-airline.
-set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
+"set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 
 " Mappings for CoCList
 " Show all diagnostics.
