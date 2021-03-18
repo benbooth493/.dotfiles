@@ -11,7 +11,23 @@ style = "cyan dimmed"
 format = '[$symbol$context]($style) in '
 
 [kubernetes.context_aliases]
-"arn:aws:eks:eu-central-1:317566953396:cluster/mesh-eks-euc1-dev" = "transit-dev-euc1-dev"
+"arn:aws:eks:ap-northeast-1:133732118944:cluster/mesh-eks-apn1-test" = "test-apn1-test"
+"arn:aws:eks:eu-central-1:317566953396:cluster/mesh-eks-euc1-dev" = "dev-euc1-dev"
+"arn:aws:eks:us-east-1:317566953396:cluster/mesh-eks-use1-dev" = "dev-use1-dev"
+"arn:aws:eks:eu-central-1:133732118944:cluster/mesh-eks-euc1-test" = "test-euc1-test"
+"arn:aws:eks:us-east-1:133732118944:cluster/mesh-eks-use1-test" = "test-use1-test"
+"arn:aws:eks:ap-northeast-1:247927184455:cluster/mesh-eks-apn1-dev" = "stage-apn1-dev"
+"arn:aws:eks:eu-central-1:247927184455:cluster/mesh-eks-euc1-dev" = "stage-euc1-dev"
+"arn:aws:eks:us-east-1:247927184455:cluster/mesh-eks-use1-dev" = "stage-use1-dev"
+"arn:aws:eks:ap-northeast-1:247927184455:cluster/mesh-eks-apn1-test" = "stage-apn1-test"
+"arn:aws:eks:eu-central-1:247927184455:cluster/mesh-eks-euc1-test" = "stage-euc1-test"
+"arn:aws:eks:us-east-1:247927184455:cluster/mesh-eks-use1-test" = "stage-use1-test"
+"arn:aws:eks:ap-northeast-1:247927184455:cluster/mesh-eks-apn1-stage" = "stage-apn1-stage"
+"arn:aws:eks:eu-central-1:247927184455:cluster/mesh-eks-euc1-stage" = "stage-euc1-stage"
+"arn:aws:eks:us-east-1:247927184455:cluster/mesh-eks-use1-stage" = "stage-use1-stage"
+"arn:aws:eks:ap-northeast-1:365546661024:cluster/mesh-eks-apn1-prod" = "prod-apn1-prod"
+"arn:aws:eks:eu-central-1:365546661024:cluster/mesh-eks-euc1-prod" = "prod-euc1-prod"
+"arn:aws:eks:us-east-1:365546661024:cluster/mesh-eks-use1-prod" = "prod-use1-prod"
 
 [terraform]
 disabled = true

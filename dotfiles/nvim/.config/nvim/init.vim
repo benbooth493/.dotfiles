@@ -16,7 +16,7 @@ call plug#begin('~/.vim/plugged')
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
-Plug 'rbong/vim-crystalline'
+Plug 'itchyny/lightline.vim'
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'dracula/vim', { 'as': 'dracula' }
 
@@ -33,10 +33,13 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 Plug 'AndrewRadev/splitjoin.vim'
 
+Plug 'preservim/nerdcommenter'
+
 Plug 'tweekmonster/startuptime.vim'
 
 call plug#end()
 
+set termguicolors
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 set t_Co=256
 set background=dark
@@ -44,36 +47,9 @@ colorscheme dracula
 hi LineNr ctermbg=NONE
 let &colorcolumn="80,".join(range(120,999),",")
 
-function! StatusLine(current, width)
-  let l:s = ''
-
-  if a:current
-    let l:s .= crystalline#mode() . crystalline#right_mode_sep('')
-  else
-    let l:s .= '%#CrystallineInactive#'
-  endif
-  let l:s .= ' %f%h%w%m%r '
-  if a:current
-    let l:s .= crystalline#right_sep('', 'Fill') . ' %{fugitive#head()}'
-  endif
-
-  let l:s .= '%='
-  if a:current
-    let l:s .= crystalline#left_sep('', 'Fill') . ' %{&paste ?"PASTE ":""}%{&spell?"SPELL ":""}'
-    let l:s .= crystalline#left_mode_sep('')
-  endif
-  if a:width > 80
-    let l:s .= ' ℓ %l/%L 𝑐 %c%V %P '
-  else
-    let l:s .= ' '
-  endif
-
-  return l:s
-endfunction
-
-let g:crystalline_enable_sep = 0
-let g:crystalline_statusline_fn = 'StatusLine'
-let g:crystalline_theme = 'default'
+let g:lightline = {
+  \ 'colorscheme': 'dracula'
+\}
 
 set guioptions-=e
 set laststatus=2

@@ -2,11 +2,14 @@
 
 autoload -Uz compinit
 compinit
+zstyle ':completion:*' menu select
 
 unsetopt share_history
 
 source <(kubectl completion zsh)
 fpath=($fpath $HOME/.zsh/completion)
+
+export FZF_DEFAULT_COMMAND="rg --files-with-matches --hidden '.' --glob '!.git'"
 
 [ -f $HOME/.fzf.zsh ] && source $HOME/.fzf.zsh
 
