@@ -3,6 +3,7 @@
 autoload -Uz compinit
 compinit
 zstyle ':completion:*' menu select
+bindkey '^[[Z' reverse-menu-complete
 
 unsetopt share_history
 
@@ -37,3 +38,4 @@ PERL_MM_OPT="INSTALL_BASE=/Users/ben.booth/perl5"; export PERL_MM_OPT;
 
 export PATH="$HOME/.poetry/bin:$PATH"
 
+if [ -e /Users/ben.booth/.nix-profile/etc/profile.d/nix.sh ]; then . /Users/ben.booth/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer

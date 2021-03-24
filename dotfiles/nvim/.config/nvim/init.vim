@@ -13,30 +13,26 @@ inoremap jk <ESC>
 let g:python3_host_prog='/usr/local/bin/python3'
 
 call plug#begin('~/.vim/plugged')
-
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-
 Plug 'itchyny/lightline.vim'
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'dracula/vim', { 'as': 'dracula' }
-
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'junegunn/fzf.vim'
-
+Plug 'oberblastmeister/neuron.nvim'
+Plug 'nvim-lua/popup.nvim'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim'
+Plug 'preservim/nerdtree'
+Plug 'easymotion/vim-easymotion'
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
-
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'hashivim/vim-terraform'
-
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 Plug 'AndrewRadev/splitjoin.vim'
-
 Plug 'preservim/nerdcommenter'
-
+Plug 'towolf/vim-helm'
 Plug 'tweekmonster/startuptime.vim'
-
 call plug#end()
 
 set termguicolors
@@ -118,23 +114,23 @@ map <C-k> <C-W>k
 map <C-h> <C-W>h
 map <C-l> <C-W>l
 
-" fzf
-let g:fzf_layout = {
-    \ 'up':'~90%',
-    \ 'window': {
-        \ 'width': 0.8,
-        \ 'height': 0.8,
-        \ 'yoffset': 0.5,
-        \ 'xoffset': 0.5,
-        \ 'highlight': 'Comment',
-        \ 'border': 'sharp',
-        \ }
-    \ }
+"" fzf
+"let g:fzf_layout = {
+    "\ 'up':'~90%',
+    "\ 'window': {
+        "\ 'width': 0.8,
+        "\ 'height': 0.8,
+        "\ 'yoffset': 0.5,
+        "\ 'xoffset': 0.5,
+        "\ 'highlight': 'Comment',
+        "\ 'border': 'sharp',
+        "\ }
+    "\ }
 
-let g:fzf_tags_command = 'ctags -R'
+"let g:fzf_tags_command = 'ctags -R'
 
-nnoremap <Leader>, :Files<CR>
-nnoremap <Leader>r :Rg<CR>
+"nnoremap <Leader>, :Files<CR>
+"nnoremap <Leader>r :Rg<CR>
 
 nnoremap <Leader>gi :GoImports<CR>
 nnoremap <Leader>gie :GoIfErr<CR>
@@ -269,4 +265,21 @@ nnoremap <silent><nowait> <space>j  :<C-u>CocNext<CR>
 nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list.
 nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
+
+lua << EOL
+require'neuron'.setup {
+    virtual_titles = true,
+    mappings = true,
+    run = nil, -- function to run when in neuron dir
+    neuron_dir = "~/neuron", -- the directory of all of your notes, expanded by default (currently supports only one directory for notes, find a way to detect neuron.dhall to use any directory)
+    leader = "gz", -- the leader key to for all mappings, remember with 'go zettel'
+}
+EOL
+
+nnoremap <leader>ff <cmd>lua require('telescope.builtin').find_files()<cr>
+nnoremap <leader>fg <cmd>lua require('telescope.builtin').live_grep()<cr>
+nnoremap <leader>fb <cmd>lua require('telescope.builtin').buffers()<cr>
+nnoremap <leader>fh <cmd>lua require('telescope.builtin').help_tags()<cr>
+
+nnoremap <leader>t :NERDTreeToggle<CR>
 
