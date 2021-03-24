@@ -18,6 +18,7 @@ alias vim="nvim"
 alias tree="tree -C"
 alias cat="bat --plain --pager=never"
 alias k="kubectl"
+alias ls="exa"
 
 [[ -s "$HOME/.gvm/scripts/gvm" ]] && source "$HOME/.gvm/scripts/gvm"
 
