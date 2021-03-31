@@ -1,3 +1,4 @@
+[ -f $HOME/.zsh-vi-mode/zsh-vi-mode.plugin.zsh ] && source $HOME/.zsh-vi-mode/zsh-vi-mode.plugin.zsh
 [ -f $HOME/.zshrc.vars ] && source $HOME/.zshrc.vars
 
 autoload -Uz compinit
@@ -6,6 +7,11 @@ zstyle ':completion:*' menu select
 bindkey '^[[Z' reverse-menu-complete
 
 unsetopt share_history
+
+export STARSHIP_CONFIG=$HOME/.config/starship.toml
+eval "$(starship init zsh)"
+
+ZVM_CURSOR_STYLE_ENABLED=false
 
 source <(kubectl completion zsh)
 fpath=($fpath $HOME/.zsh/completion)
@@ -22,9 +28,6 @@ alias ls="exa"
 
 [[ -s "$HOME/.gvm/scripts/gvm" ]] && source "$HOME/.gvm/scripts/gvm"
 
-export STARSHIP_CONFIG=$HOME/.config/starship.toml
-eval "$(starship init zsh)"
-
 export NVM_DIR="$HOME/.nvm"
 [ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"
 [ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && . "/usr/local/opt/nvm/etc/bash_completion.d/nvm"
@@ -40,3 +43,4 @@ PERL_MM_OPT="INSTALL_BASE=/Users/ben.booth/perl5"; export PERL_MM_OPT;
 export PATH="$HOME/.poetry/bin:$PATH"
 
 if [ -e /Users/ben.booth/.nix-profile/etc/profile.d/nix.sh ]; then . /Users/ben.booth/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
+
