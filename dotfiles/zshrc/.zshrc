@@ -44,3 +44,4 @@ export PATH="$HOME/.poetry/bin:$PATH"
 
 if [ -e /Users/ben.booth/.nix-profile/etc/profile.d/nix.sh ]; then . /Users/ben.booth/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
 
+alias lg='lazygit'
