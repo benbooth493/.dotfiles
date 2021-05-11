@@ -1,15 +1,19 @@
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
 [ -f $HOME/.zshrc.vars ] && source $HOME/.zshrc.vars
+
+source /usr/local/opt/powerlevel10k/powerlevel10k.zsh-theme
 
 autoload -Uz compinit; compinit
 zstyle ':completion:*' menu select
 bindkey '^[[Z' reverse-menu-complete
 
 unsetopt share_history
-
-autoload -U promptinit; promptinit
-prompt pure
-
-ZVM_CURSOR_STYLE_ENABLED=false
 
 source <(kubectl completion zsh)
 fpath=($fpath $HOME/.zsh/completion)
@@ -49,3 +53,6 @@ if [ -e /Users/ben.booth/.nix-profile/etc/profile.d/nix.sh ]; then . /Users/ben.
 
 alias lg='lazygit'
 export PATH=$HOME/.config/nvcode/utils/bin:$PATH
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
