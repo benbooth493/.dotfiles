@@ -1,22 +1,26 @@
-[ -f $HOME/.zsh-vi-mode/zsh-vi-mode.plugin.zsh ] && source $HOME/.zsh-vi-mode/zsh-vi-mode.plugin.zsh
 [ -f $HOME/.zshrc.vars ] && source $HOME/.zshrc.vars
 
-autoload -Uz compinit
-compinit
+autoload -Uz compinit; compinit
 zstyle ':completion:*' menu select
 bindkey '^[[Z' reverse-menu-complete
 
 unsetopt share_history
 
-export STARSHIP_CONFIG=$HOME/.config/starship.toml
-eval "$(starship init zsh)"
+autoload -U promptinit; promptinit
+prompt pure
 
 ZVM_CURSOR_STYLE_ENABLED=false
 
 source <(kubectl completion zsh)
 fpath=($fpath $HOME/.zsh/completion)
 
+source <(flux completion zsh)
+
 export FZF_DEFAULT_COMMAND="rg --files-with-matches --hidden '.' --glob '!.git'"
+
+if [[ -f /usr/local/share/chtf/chtf.sh ]]; then
+    source /usr/local/share/chtf/chtf.sh
+fi
 
 [ -f $HOME/.fzf.zsh ] && source $HOME/.fzf.zsh
 
@@ -25,14 +29,13 @@ alias tree="tree -C"
 alias cat="bat --plain --pager=never"
 alias k="kubectl"
 alias ls="exa"
-
-[[ -s "$HOME/.gvm/scripts/gvm" ]] && source "$HOME/.gvm/scripts/gvm"
+alias ll="exa -lh --git"
+alias la="exa -alh --git"
+alias argocd="argocd --grpc-web"
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"
 [ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && . "/usr/local/opt/nvm/etc/bash_completion.d/nvm"
-
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 PATH="/Users/ben.booth/perl5/bin${PATH:+:${PATH}}"; export PATH;
 PERL5LIB="/Users/ben.booth/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
@@ -45,3 +48,4 @@ export PATH="$HOME/.poetry/bin:$PATH"
 if [ -e /Users/ben.booth/.nix-profile/etc/profile.d/nix.sh ]; then . /Users/ben.booth/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
 
 alias lg='lazygit'
+export PATH=$HOME/.config/nvcode/utils/bin:$PATH
