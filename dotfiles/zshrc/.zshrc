@@ -9,6 +9,9 @@ fi
 
 source /usr/local/opt/powerlevel10k/powerlevel10k.zsh-theme
 
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
 autoload -Uz compinit; compinit
 zstyle ':completion:*' menu select
 bindkey '^[[Z' reverse-menu-complete
@@ -54,5 +57,3 @@ if [ -e /Users/ben.booth/.nix-profile/etc/profile.d/nix.sh ]; then . /Users/ben.
 alias lg='lazygit'
 export PATH=$HOME/.config/nvcode/utils/bin:$PATH
 
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
