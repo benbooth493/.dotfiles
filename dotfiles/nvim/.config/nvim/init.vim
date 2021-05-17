@@ -120,6 +120,7 @@ nvim_lsp.gopls.setup{}
 nvim_lsp.rls.setup{}
 nvim_lsp.rust_analyzer.setup{}
 nvim_lsp.bashls.setup{}
+nvim_lsp.terraformls.setup{cmd = {'terraform-ls', 'serve'}}
 
 -- Enable rust_analyzer
 nvim_lsp.rust_analyzer.setup({ on_attach=on_attach })

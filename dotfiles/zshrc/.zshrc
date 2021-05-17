@@ -12,11 +12,22 @@ source /usr/local/opt/powerlevel10k/powerlevel10k.zsh-theme
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
+typeset POWERLEVEL9K_SHORTEN_DIR_LENGTH=2
+typeset POWERLEVEL9K_SHORTEN_STRATEGY=truncate_from_right
+typeset POWERLEVEL9K_DISABLE_RPROMPT=true
+
 autoload -Uz compinit; compinit
 zstyle ':completion:*' menu select
 bindkey '^[[Z' reverse-menu-complete
 
-unsetopt share_history
+setopt EXTENDED_HISTORY
+setopt HIST_EXPIRE_DUPS_FIRST
+setopt HIST_IGNORE_DUPS
+setopt HIST_IGNORE_ALL_DUPS
+setopt HIST_IGNORE_SPACE
+setopt HIST_FIND_NO_DUPS
+setopt HIST_SAVE_NO_DUPS
+setopt HIST_BEEP
 
 source <(kubectl completion zsh)
 fpath=($fpath $HOME/.zsh/completion)
@@ -35,9 +46,9 @@ alias vim="nvim"
 alias tree="tree -C"
 alias cat="bat --plain --pager=never"
 alias k="kubectl"
-alias ls="exa"
-alias ll="exa -lh --git"
-alias la="exa -alh --git"
+alias ls="exa --icons"
+alias ll="exa -lh --icons --git"
+alias la="exa -alh --icons --git"
 alias argocd="argocd --grpc-web"
 
 export NVM_DIR="$HOME/.nvm"
