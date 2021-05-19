@@ -19,7 +19,6 @@ Plug 'nvim-lua/completion-nvim'
 Plug 'itchyny/lightline.vim'
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'dracula/vim', { 'as': 'dracula' }
-Plug 'oberblastmeister/neuron.nvim'
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
@@ -106,7 +105,6 @@ set wrap
 autocmd TermOpen * setlocal nonumber norelativenumber
 
 lua << EOF
-
 -- nvim_lsp object
 local nvim_lsp = require'lspconfig'
 
@@ -228,5 +226,5 @@ function! TermToggle()
     endif
 endfunction
 
-nnoremap <C-t> :call TermToggle()<cr>
-tnoremap <C-t> <C-\><C-n>:call TermToggle()<cr>
+nnoremap <C-x> :call TermToggle()<cr>
+tnoremap <C-x> <C-\><C-n>:call TermToggle()<cr>

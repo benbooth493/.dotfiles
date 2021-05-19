@@ -1,6 +1,6 @@
 #!/bin/bash
 
-pushd ./dotfiles
-stow --stow --target ~/ *
-popd
+pushd ./dotfiles || exit
+stow --restow --target ~/ *
+popd || exit
 
