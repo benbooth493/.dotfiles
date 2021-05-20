@@ -14,6 +14,7 @@ bo.shiftwidth = indent
 bo.tabstop = indent
 bo.softtabstop = indent
 bo.autoindent = true
+bo.smartindent = true
 
 o.backspace = 'eol,start,indent'
 o.autoread = true
