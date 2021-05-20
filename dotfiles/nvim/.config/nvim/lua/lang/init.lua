@@ -92,13 +92,35 @@ capabilities.textDocument.completion.completionItem.snippetSupport = true;
 -- local servers = require'lspinstall'.installed_servers()
 local servers = {"pyright", "rust_analyzer", "gopls", "tsserver", "vimls", "bashls", "terraformls"}
 for _, lsp in ipairs(servers) do
-    nvim_lsp[lsp].setup {
-        capabilities = capabilities,
-        on_attach = on_attach
-        -- init_options = {
-        --     onlyAnalyzeProjectsWithOpenFiles = true,
-        --     suggestFromUnimportedLibraries = false,
-        --     closingLabels = true,
-        -- };
-    }
+    if lsp == "gopls" then
+        nvim_lsp[lsp].setup {
+            capabilities = capabilities,
+            on_attach = on_attach,
+            cmd = {"gopls", "serve"},
+            settings = {
+                gopls = {
+                    analyses = {
+                        unusedparams = true,
+                    },
+                    staticcheck = true,
+                },
+            },
+            -- init_options = {
+            --     onlyAnalyzeProjectsWithOpenFiles = true,
+            --     suggestFromUnimportedLibraries = false,
+            --     closingLabels = true,
+            -- };
+        }
+
+    else
+        nvim_lsp[lsp].setup {
+            capabilities = capabilities,
+            on_attach = on_attach
+            -- init_options = {
+            --     onlyAnalyzeProjectsWithOpenFiles = true,
+            --     suggestFromUnimportedLibraries = false,
+            --     closingLabels = true,
+            -- };
+        }
+    end
 end

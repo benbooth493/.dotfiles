@@ -27,8 +27,6 @@ o.splitright = true
 o.wildmode = 'list:longest'
 o.clipboard = 'unnamed,unnamedplus'
 o.timeoutlen = 500
-o.undodir = '~/.undo//'
-o.undofile = true
 o.updatetime = 300
 o.mouse = 'a'
 o.completeopt = 'menuone,noinsert,noselect'
@@ -57,6 +55,10 @@ set list listchars=tab:▸\ ,trail:·,precedes:←,extends:→,eol:↲,nbsp:␣
 
 cmd 'set so=10'
 
+cmd [[
+set undodir=~/.undo// undofile
+]]
+
 -- Highlight on yank
 vim.cmd 'au TextYankPost * lua vim.highlight.on_yank {on_visual = false}'
 
@@ -64,8 +66,8 @@ vim.cmd 'au TextYankPost * lua vim.highlight.on_yank {on_visual = false}'
 vim.api.nvim_exec([[
 augroup auto_fmt
     autocmd!
-    autocmd BufWritePre *.py,*.lua try | undojoin | Neoformat | catch /^Vim\%((\a\+)\)\=:E790/ | finally | silent Neoformat | endtry
-aug END
+    autocmd BufWritePre *.py,*.lua,*.go try | undojoin | Neoformat | catch /^Vim\%((\a\+)\)\=:E790/ | finally | silent Neoformat | endtry
+augroup END
 ]], false)
 
 vim.api.nvim_exec([[
