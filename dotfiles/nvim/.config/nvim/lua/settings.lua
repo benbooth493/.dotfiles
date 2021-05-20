@@ -14,6 +14,7 @@ bo.shiftwidth = indent
 bo.tabstop = indent
 bo.softtabstop = indent
 bo.autoindent = true
+
 o.backspace = 'eol,start,indent'
 o.autoread = true
 o.background = 'dark'
@@ -31,6 +32,8 @@ o.updatetime = 300
 o.mouse = 'a'
 o.completeopt = 'menuone,noinsert,noselect'
 o.cmdheight = 2
+o.showmode = false
+
 wo.number = true
 wo.relativenumber = true
 wo.scrolloff = 8
