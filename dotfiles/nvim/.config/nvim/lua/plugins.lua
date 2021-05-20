@@ -64,6 +64,7 @@ return require('packer').startup(function()
     use {'kevinhwang91/nvim-bqf'}
     use {'junegunn/vim-peekaboo'}
     use {'pechorin/any-jump.vim'}
+    use {'windwp/nvim-autopairs'}
 
     -- Snippets
     use {'hrsh7th/vim-vsnip'}
