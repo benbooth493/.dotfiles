@@ -26,7 +26,8 @@ return require('packer').startup(function()
         'TimUntersberger/neogit',
         config = function() require('neogit').setup() end
     }
-    use {'unblevable/quick-scope'}
+    use {'phaazon/hop.nvim'}
+    use {'kyazdani42/nvim-tree.lua'}
 
     -- Telescope
     use {'nvim-lua/plenary.nvim'}
