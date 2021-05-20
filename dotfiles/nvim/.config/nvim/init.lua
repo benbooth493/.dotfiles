@@ -23,3 +23,6 @@ require('keymappings')
 
 -- LSP
 require('lang')
+
+-- Other config
+require('config')

@@ -84,6 +84,9 @@ return require('packer').startup(function()
     use {'puremourning/vimspector'}
     use {'nvim-telescope/telescope-vimspector.nvim'}
 
+    -- Telescope fzf
+    use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make'}
+
     -- Rust
     use {'rust-lang/rust.vim'}
 

@@ -27,10 +27,17 @@ o.splitright = true
 o.wildmode = 'list:longest'
 o.clipboard = 'unnamed,unnamedplus'
 o.timeoutlen = 500
+o.undodir = '~/.undo//'
+o.undofile = true
+o.updatetime = 300
+o.mouse = 'a'
+o.completeopt = 'menuone,noinsert,noselect'
+o.cmdheight = 2
 wo.number = true
 wo.relativenumber = true
 wo.scrolloff = 8
 wo.cursorline = true
+wo.signcolumn = 'yes'
 
 cmd [[
 set expandtab smarttab shiftround autoindent smartindent smartcase
@@ -47,6 +54,8 @@ let &colorcolumn="80,".join(range(120,999),",")
 cmd [[
 set list listchars=tab:▸\ ,trail:·,precedes:←,extends:→,eol:↲,nbsp:␣
 ]]
+
+cmd 'set so=10'
 
 -- Highlight on yank
 vim.cmd 'au TextYankPost * lua vim.highlight.on_yank {on_visual = false}'
