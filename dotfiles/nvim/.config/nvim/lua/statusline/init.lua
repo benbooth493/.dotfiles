@@ -2,15 +2,10 @@ local gl = require('galaxyline')
 local colors = require('galaxyline.theme').default
 local condition = require('galaxyline.condition')
 local gls = gl.section
+
 gl.short_line_list = {'NvimTree','vista','dbui','packer'}
 
 gls.left[1] = {
-  RainbowRed = {
-    provider = function() return '▊ ' end,
-    highlight = {colors.blue,colors.bg}
-  },
-}
-gls.left[2] = {
   ViMode = {
     provider = function()
       -- auto change color according the vim mode
@@ -23,19 +18,19 @@ gls.left[2] = {
                           rm = colors.cyan, ['r?'] = colors.cyan,
                           ['!']  = colors.red,t = colors.red}
       vim.api.nvim_command('hi GalaxyViMode guifg='..mode_color[vim.fn.mode()])
-      return '  '
+      return '⬢  '
     end,
     highlight = {colors.red,colors.bg,'bold'},
   },
 }
-gls.left[3] = {
+gls.left[2] = {
   FileSize = {
     provider = 'FileSize',
     condition = condition.buffer_not_empty,
     highlight = {colors.fg,colors.bg}
   }
 }
-gls.left[4] ={
+gls.left[3] ={
   FileIcon = {
     provider = 'FileIcon',
     condition = condition.buffer_not_empty,
@@ -43,7 +38,7 @@ gls.left[4] ={
   },
 }
 
-gls.left[5] = {
+gls.left[4] = {
   FileName = {
     provider = 'FileName',
     condition = condition.buffer_not_empty,
@@ -51,7 +46,7 @@ gls.left[5] = {
   }
 }
 
-gls.left[6] = {
+gls.left[5] = {
   LineInfo = {
     provider = 'LineColumn',
     separator = ' ',
@@ -60,7 +55,7 @@ gls.left[6] = {
   },
 }
 
-gls.left[7] = {
+gls.left[6] = {
   PerCent = {
     provider = 'LinePercent',
     separator = ' ',
@@ -69,14 +64,14 @@ gls.left[7] = {
   }
 }
 
-gls.left[8] = {
+gls.left[7] = {
   DiagnosticError = {
     provider = 'DiagnosticError',
     icon = '  ',
     highlight = {colors.red,colors.bg}
   }
 }
-gls.left[9] = {
+gls.left[8] = {
   DiagnosticWarn = {
     provider = 'DiagnosticWarn',
     icon = '  ',
@@ -84,7 +79,7 @@ gls.left[9] = {
   }
 }
 
-gls.left[10] = {
+gls.left[9] = {
   DiagnosticHint = {
     provider = 'DiagnosticHint',
     icon = '  ',
@@ -92,7 +87,7 @@ gls.left[10] = {
   }
 }
 
-gls.left[11] = {
+gls.left[10] = {
   DiagnosticInfo = {
     provider = 'DiagnosticInfo',
     icon = '  ',
@@ -100,7 +95,7 @@ gls.left[11] = {
   }
 }
 
-gls.mid[1] = {
+gls.right[1] = {
   ShowLspClient = {
     provider = 'GetLspClient',
     condition = function ()
@@ -115,7 +110,7 @@ gls.mid[1] = {
   }
 }
 
-gls.right[1] = {
+gls.right[2] = {
   FileEncode = {
     provider = 'FileEncode',
     condition = condition.hide_in_width,
@@ -125,7 +120,7 @@ gls.right[1] = {
   }
 }
 
-gls.right[2] = {
+gls.right[3] = {
   FileFormat = {
     provider = 'FileFormat',
     condition = condition.hide_in_width,
@@ -135,7 +130,7 @@ gls.right[2] = {
   }
 }
 
-gls.right[3] = {
+gls.right[4] = {
   GitIcon = {
     provider = function() return '  ' end,
     condition = condition.check_git_workspace,
@@ -145,7 +140,7 @@ gls.right[3] = {
   }
 }
 
-gls.right[4] = {
+gls.right[5] = {
   GitBranch = {
     provider = 'GitBranch',
     condition = condition.check_git_workspace,
@@ -153,7 +148,7 @@ gls.right[4] = {
   }
 }
 
-gls.right[5] = {
+gls.right[6] = {
   DiffAdd = {
     provider = 'DiffAdd',
     condition = condition.hide_in_width,
@@ -161,7 +156,7 @@ gls.right[5] = {
     highlight = {colors.green,colors.bg},
   }
 }
-gls.right[6] = {
+gls.right[7] = {
   DiffModified = {
     provider = 'DiffModified',
     condition = condition.hide_in_width,
@@ -169,20 +164,13 @@ gls.right[6] = {
     highlight = {colors.orange,colors.bg},
   }
 }
-gls.right[7] = {
+gls.right[8] = {
   DiffRemove = {
     provider = 'DiffRemove',
     condition = condition.hide_in_width,
     icon = '  ',
     highlight = {colors.red,colors.bg},
   }
-}
-
-gls.right[8] = {
-  RainbowBlue = {
-    provider = function() return ' ▊' end,
-    highlight = {colors.blue,colors.bg}
-  },
 }
 
 gls.short_line_left[1] = {

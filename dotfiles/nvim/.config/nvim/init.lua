@@ -24,5 +24,8 @@ require('keymappings')
 -- LSP
 require('lang')
 
+-- DAP
+require('dbg')
+
 -- Other config
 require('config')

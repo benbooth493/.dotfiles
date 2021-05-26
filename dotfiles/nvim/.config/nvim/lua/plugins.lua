@@ -42,10 +42,6 @@ return require('packer').startup(function()
     }
     use {'nvim-telescope/telescope-symbols.nvim'}
     use {'nvim-telescope/telescope-github.nvim'}
-    use {
-        'nvim-telescope/telescope-arecibo.nvim',
-        rocks = {"openssl", "lua-http-parser"}
-    }
 
     -- LSP config
     use {'neovim/nvim-lspconfig'}
@@ -90,10 +86,18 @@ return require('packer').startup(function()
     use {'puremourning/vimspector'}
     use {'nvim-telescope/telescope-vimspector.nvim'}
 
+    -- DAP
+    use {'mfussenegger/nvim-dap'}
+    use {'nvim-telescope/telescope-dap.nvim'}
+    use {'mfussenegger/nvim-dap-python'}
+
     -- Telescope fzf
     use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make'}
 
     -- Rust
     use {'rust-lang/rust.vim'}
+
+    use {'npxbr/glow.nvim', run = ':GlowInstall'}
+
 
 end)

@@ -11,12 +11,6 @@ require('telescope').setup {
     grep_previewer = require'telescope.previewers'.vim_buffer_vimgrep.new,
     qflist_previewer = require'telescope.previewers'.vim_buffer_qflist.new,
     extensions = {
-        arecibo = {
-            ["selected_engine"] = 'google',
-            ["url_open_command"] = 'open',
-            ["show_http_headers"] = false,
-            ["show_domain_icons"] = false
-        },
         fzf = {
             override_generic_sorter = false,
             override_file_sorter = true,
@@ -24,9 +18,6 @@ require('telescope').setup {
         }
     }
 }
--- require('telescope').load_extension('snippets')
--- require('telescope').load_extension('arecibo')
--- require('telescope').load_extension('media_files')
 
 local actions = require('telescope.actions')
 
@@ -36,15 +27,7 @@ M.search_dotfiles = function()
     require("telescope.builtin").find_files(
         {
             prompt_title = "< VimRC >",
-            cwd = "$HOME/workspace/development/alpha2phi/dotfiles/"
-        })
-end
-
-M.switch_projects = function()
-    require("telescope.builtin").find_files(
-        {
-            prompt_title = "< Switch Project >",
-            cwd = "$HOME/workspace/development/"
+            cwd = "$HOME/code/github.com/benbooth493/dotfiles/"
         })
 end
 
