@@ -19,7 +19,7 @@ bo.smartindent = true
 o.backspace = 'eol,start,indent'
 o.autoread = true
 o.background = 'dark'
-o.t_Co = '256'
+vim.go.t_Co = '256'
 o.termguicolors = true
 o.hidden = true
 o.ignorecase = true
@@ -34,11 +34,12 @@ o.mouse = 'a'
 o.completeopt = 'menuone,noinsert,noselect'
 o.cmdheight = 2
 o.showmode = false
-
+o.wrap = false
 wo.number = true
 wo.relativenumber = true
 wo.scrolloff = 8
 wo.cursorline = true
+wo.cursorcolumn = true
 wo.signcolumn = 'yes'
 
 cmd [[

@@ -19,5 +19,5 @@ function! TermToggle()
     endif
 endfunction
 
-nnoremap <silent> <C-f> :call TermToggle()<cr>
-tnoremap <silent> <C-f> <C-\><C-n>:call TermToggle()<cr>
+nnoremap <silent> <leader><leader>t :call TermToggle()<cr>
+tnoremap <silent> <leader><leader>t <C-\><C-n>:call TermToggle()<cr>

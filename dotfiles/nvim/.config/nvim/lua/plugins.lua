@@ -98,6 +98,8 @@ return require('packer').startup(function()
     use {'rust-lang/rust.vim'}
 
     use {'npxbr/glow.nvim', run = ':GlowInstall'}
+    use {'romgrk/barbar.nvim'}
 
+    use {'hashivim/vim-terraform'}
 
 end)
