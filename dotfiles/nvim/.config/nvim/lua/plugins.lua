@@ -18,21 +18,24 @@ return require('packer').startup(function()
     use {'wellle/targets.vim'}
     use {'easymotion/vim-easymotion'}
     use {'liuchengxu/vim-which-key'}
+
     use {
         'lewis6991/gitsigns.nvim',
         config = function() require('gitsigns').setup() end
     }
+
     use {
         'TimUntersberger/neogit',
         config = function() require('neogit').setup() end
     }
-    use {'phaazon/hop.nvim'}
+
     use {'kyazdani42/nvim-tree.lua'}
 
     -- Telescope
     use {'nvim-lua/plenary.nvim'}
     use {'nvim-lua/popup.nvim'}
     use {'nvim-telescope/telescope.nvim'}
+
     use {
         'nvim-telescope/telescope-frecency.nvim',
         requires = {'tami5/sql.nvim'},
@@ -40,6 +43,7 @@ return require('packer').startup(function()
             require('telescope').load_extension('frecency')
         end
     }
+
     use {'nvim-telescope/telescope-symbols.nvim'}
     use {'nvim-telescope/telescope-github.nvim'}
 
@@ -97,9 +101,13 @@ return require('packer').startup(function()
     -- Rust
     use {'rust-lang/rust.vim'}
 
+    -- Go
+    use {'fatih/vim-go', run = ':GoUpdateBinaries'}
+
+    -- Misc
     use {'npxbr/glow.nvim', run = ':GlowInstall'}
     use {'romgrk/barbar.nvim'}
-
     use {'hashivim/vim-terraform'}
-
+    use {'ggandor/lightspeed.nvim'}
+    use {'jjo/vim-cue'}
 end)

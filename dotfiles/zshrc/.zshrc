@@ -22,7 +22,7 @@ setopt HIST_IGNORE_ALL_DUPS
 bindkey -v
 
 # Prompt for spelling correction of commands.
-#setopt CORRECT
+setopt CORRECT
 
 # Customize spelling correction prompt.
 #SPROMPT='zsh: correct %F{red}%R%f to %F{green}%r%f [nyae]? '
@@ -86,7 +86,7 @@ ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets)
 # See https://github.com/zsh-users/zsh-syntax-highlighting/blob/master/docs/highlighters/main.md#how-to-tweak-it
 #typeset -A ZSH_HIGHLIGHT_STYLES
 #ZSH_HIGHLIGHT_STYLES[comment]='fg=242'
-
+#
 # ------------------
 # Initialize modules
 # ------------------
@@ -104,6 +104,8 @@ source ${ZIM_HOME}/init.zsh
 #
 # zsh-history-substring-search
 #
+autoload -U promptinit; promptinit
+prompt purer
 
 # Bind ^[[A/^[[B manually so up/down works both before and after zle-line-init
 bindkey '^[[A' history-substring-search-up
