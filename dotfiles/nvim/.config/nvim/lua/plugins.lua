@@ -31,6 +31,20 @@ return require('packer').startup(function()
 
     use {'kyazdani42/nvim-tree.lua'}
 
+    use {
+        'aserowy/tmux.nvim',
+        config = function()
+            require("tmux").setup({
+                navigation = {
+                    enable_default_keybindings = true,
+                },
+                resize = {
+                    enable_default_keybindings = true,
+                }
+            })
+        end
+    }
+
     -- Telescope
     use {'nvim-lua/plenary.nvim'}
     use {'nvim-lua/popup.nvim'}
