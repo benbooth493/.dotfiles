@@ -92,7 +92,9 @@ return require('packer').startup(function(use)
     use {'neovim/nvim-lspconfig'}
 
     -- Completion
-    use {'hrsh7th/nvim-compe'}
+    use {
+        'hrsh7th/nvim-compe',
+    }
 
     use {
         'tzachar/compe-tabnine',
