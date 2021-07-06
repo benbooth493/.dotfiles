@@ -161,3 +161,5 @@ PERL_MM_OPT="INSTALL_BASE=/Users/ben.booth/perl5"; export PERL_MM_OPT;
 export PATH="$HOME/.poetry/bin:$PATH"
 
 export PATH=$HOME/.config/nvcode/utils/bin:$PATH
+eval "$(rbenv init -)"
+

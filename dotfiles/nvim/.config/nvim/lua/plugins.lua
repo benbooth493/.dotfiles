@@ -67,6 +67,12 @@ return require('packer').startup(function()
     -- Completion
     use {'hrsh7th/nvim-compe'}
 
+    use {
+        'tzachar/compe-tabnine',
+        run = './install.sh',
+        requires = 'hrsh7th/nvim-compe',
+    }
+
     -- Better LSP experience
     use {'glepnir/lspsaga.nvim'}
     use {'onsails/lspkind-nvim'}
@@ -124,4 +130,16 @@ return require('packer').startup(function()
     use {'hashivim/vim-terraform'}
     use {'ggandor/lightspeed.nvim'}
     use {'jjo/vim-cue'}
+    use {'towolf/vim-helm'}
+    use {'itkq/fluentd-vim'}
+
+    -- Orgmode
+    use {'kristijanhusak/orgmode.nvim',
+        config = function()
+            require('orgmode').setup({
+                org_agenda_files = {'~/Dropbox/org/*', '~/my-orgs/**/*'},
+                org_default_notes_file = '~/Dropbox/org/refile.org',
+            })
+        end
+    }
 end)

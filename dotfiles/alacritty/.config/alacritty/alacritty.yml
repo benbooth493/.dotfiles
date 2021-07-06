@@ -23,16 +23,16 @@ scrolling:
 font:
   normal:
     family: "FiraCode Nerd Font Mono"
-    style: Regular
+    style: Light
   bold:
     family: "FiraCode Nerd Font Mono"
-    style: Regular
+    style: Light
   italic:
     family: "FiraCode Nerd Font Mono"
-    style: Regular
+    style: Light
   bold_italic:
     family: "FiraCode Nerd Font Mono"
-    style: Regular
+    style: Light
   size: 20.0
   offset:
     x: 0
