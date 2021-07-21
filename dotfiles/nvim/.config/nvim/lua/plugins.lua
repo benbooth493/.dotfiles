@@ -1,174 +1,239 @@
-local execute = vim.api.nvim_command
-local fn = vim.fn
+local present, _ = pcall(require, "packerInit")
+local packer
 
-local install_path = fn.stdpath "data" .. "/site/pack/packer/start/packer.nvim"
-
-if fn.empty(fn.glob(install_path)) > 0 then
-    execute("!git clone https://github.com/wbthomason/packer.nvim " .. install_path)
-    execute "packadd packer.nvim"
+if present then
+    packer = require "packer"
+else
+    return false
 end
 
-local packer_ok, packer = pcall(require, "packer")
-if not packer_ok then
-    return
-end
+local use = packer.use
 
-packer.init {
-    compile_path = require("packer.util").join_paths(vim.fn.stdpath "config", "plugin", "packer_compiled.vim"),
-    git = { clone_timeout = 300 },
-    display = {
-        open_fn = function()
-            return require("packer.util").float { border = "single" }
-        end,
-    },
-}
+return packer.startup(
+    function()
+        use {
+            "wbthomason/packer.nvim",
+            event = "VimEnter"
+        }
 
-vim.cmd "autocmd BufWritePost plugins.lua PackerCompile"
+        use {
+            "akinsho/nvim-bufferline.lua",
+            after = "nvim-base16.lua"
+        }
 
-return require('packer').startup(function(use)
+        use {
+            "glepnir/galaxyline.nvim",
+            after = "nvim-base16.lua",
+            config = function()
+                require "config.statusline"
+            end
+        }
 
-    -- Packer can manage itself as an optional plugin
-    use {'wbthomason/packer.nvim'}
+        -- color related stuff
+        use {
+            "siduck76/nvim-base16.lua",
+            after = "packer.nvim",
+            config = function()
+                require "theme"
+            end
+        }
 
-    -- Color scheme
-    use {'kyazdani42/nvim-web-devicons'}
-    use {'dracula/vim', as = 'dracula'}
+        use {
+            "norcalli/nvim-colorizer.lua",
+            event = "BufRead",
+            config = function()
+                require("config.others").colorizer()
+            end
+        }
 
-    -- Development
-    use {'tpope/vim-dispatch'}
-    use {'tpope/vim-fugitive'}
-    use {'tpope/vim-surround'}
-    use {'tpope/vim-commentary'}
-    use {'tpope/vim-rhubarb'}
-    use {'tpope/vim-unimpaired'}
-    use {'tpope/vim-vinegar'}
-    use {'wellle/targets.vim'}
-    use {'easymotion/vim-easymotion'}
-    use {'liuchengxu/vim-which-key'}
+        -- language related plugins
+        use {
+            "nvim-treesitter/nvim-treesitter",
+            event = "BufRead",
+            config = function()
+                require "config.treesitter"
+            end
+        }
 
-    use {
-        'lewis6991/gitsigns.nvim',
-        config = function() require('gitsigns').setup() end
-    }
+        use {
+            "kabouzeid/nvim-lspinstall",
+            event = "BufRead"
+        }
 
-    use {
-        'TimUntersberger/neogit',
-        config = function() require('neogit').setup() end
-    }
+        use {
+            "neovim/nvim-lspconfig",
+            after = "nvim-lspinstall",
+            config = function()
+                require "config.lspconfig"
+            end
+        }
 
-    use {'kyazdani42/nvim-tree.lua'}
+        use {
+            "onsails/lspkind-nvim",
+            event = "BufRead",
+            config = function()
+                require("config.others").lspkind()
+            end
+        }
 
-    use {
-        'aserowy/tmux.nvim',
-        config = function()
-            require("tmux").setup({
-                navigation = {
-                    enable_default_keybindings = true,
+        -- load compe in insert mode only
+        use {
+            "hrsh7th/nvim-compe",
+            event = "InsertEnter",
+            config = function()
+                require "config.compe"
+            end,
+            wants = "LuaSnip",
+            requires = {
+                {
+                    "L3MON4D3/LuaSnip",
+                    wants = "friendly-snippets",
+                    event = "InsertCharPre",
+                    config = function()
+                        require "config.luasnip"
+                    end
                 },
-                resize = {
-                    enable_default_keybindings = true,
+                {
+                    "rafamadriz/friendly-snippets",
+                    event = "InsertCharPre"
                 }
-            })
-        end
-    }
+            }
+        }
 
-    -- Telescope
-    use {'nvim-lua/plenary.nvim'}
-    use {'nvim-lua/popup.nvim'}
-    use {'nvim-telescope/telescope.nvim'}
+        use {
+            "sbdchd/neoformat",
+            cmd = "Neoformat"
+        }
 
-    use {
-        'nvim-telescope/telescope-frecency.nvim',
-        requires = {'tami5/sql.nvim'},
-        config = function()
-            require('telescope').load_extension('frecency')
-        end
-    }
+        -- file managing , picker etc
+        use {
+            "kyazdani42/nvim-tree.lua",
+            cmd = "NvimTreeToggle",
+            config = function()
+                require "config.nvimtree"
+            end
+        }
 
-    use {'nvim-telescope/telescope-symbols.nvim'}
-    use {'nvim-telescope/telescope-github.nvim'}
+        use {
+            "kyazdani42/nvim-web-devicons",
+            after = "nvim-base16.lua",
+            config = function()
+                require "config.icons"
+            end
+        }
 
-    -- LSP config
-    use {'neovim/nvim-lspconfig'}
+        use {
+            "nvim-lua/plenary.nvim",
+            event = "BufRead"
+        }
 
-    -- Completion
-    use {
-        'hrsh7th/nvim-compe',
-    }
+        use {
+            "nvim-lua/popup.nvim",
+            after = "plenary.nvim"
+        }
 
-    use {
-        'tzachar/compe-tabnine',
-        run = './install.sh',
-        requires = 'hrsh7th/nvim-compe',
-    }
+        use {
+            "nvim-telescope/telescope.nvim",
+            cmd = "Telescope",
+            config = function()
+                require "config.telescope"
+            end
+        }
 
-    -- Better LSP experience
-    use {'glepnir/lspsaga.nvim'}
-    use {'onsails/lspkind-nvim'}
-    use {'sbdchd/neoformat'}
-    use {'p00f/nvim-ts-rainbow'}
-    use {'ray-x/lsp_signature.nvim'}
-    use {'szw/vim-maximizer'}
-    use {'dyng/ctrlsf.vim'}
-    use {'dbeniamine/cheat.sh-vim'}
-    use {'kevinhwang91/nvim-bqf'}
-    use {'junegunn/vim-peekaboo'}
-    use {'pechorin/any-jump.vim'}
-    use {'windwp/nvim-autopairs'}
+        use {
+            "nvim-telescope/telescope-fzf-native.nvim",
+            run = "make",
+            cmd = "Telescope"
+        }
 
-    -- Snippets
-    use {'hrsh7th/vim-vsnip'}
-    use {'rafamadriz/friendly-snippets'}
-    use {'cstrap/python-snippets'}
-    use {'ylcnfrht/vscode-python-snippet-pack'}
-    use {'xabikos/vscode-javascript'}
-    use {'golang/vscode-go'}
-    use {'rust-lang/vscode-rust'}
+        -- git stuff
+        use {
+            "lewis6991/gitsigns.nvim",
+            after = "plenary.nvim",
+            config = function()
+                require "config.gitsigns"
+            end
+        }
 
-    -- Better syntax
-    use {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate'}
+        -- misc plugins
+        use {
+            "windwp/nvim-autopairs",
+            after = "nvim-compe",
+            config = function()
+                require "config.autopairs"
+            end
+        }
 
-    -- Status line
-    use {
-        'glepnir/galaxyline.nvim',
-        branch = 'main',
-        config = function() require 'statusline' end
-    }
+        use {
+            "andymass/vim-matchup",
+            event = "CursorMoved"
+        }
 
-    -- Debugging
-    use {'puremourning/vimspector'}
-    use {'nvim-telescope/telescope-vimspector.nvim'}
+        use {
+            "terrortylor/nvim-comment",
+            cmd = "CommentToggle",
+            config = function()
+                require("config.others").comment()
+            end
+        }
 
-    -- DAP
-    use {'mfussenegger/nvim-dap'}
-    use {'nvim-telescope/telescope-dap.nvim'}
-    use {'mfussenegger/nvim-dap-python'}
+        use {
+            "tweekmonster/startuptime.vim",
+            cmd = "StartupTime"
+        }
 
-    -- Telescope fzf
-    use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make'}
+        -- load autosave only if its globally enabled
+        use {
+            "Pocco81/AutoSave.nvim",
+            config = function()
+                require "config.autosave"
+            end,
+            cond = function()
+                return vim.g.auto_save == true
+            end
+        }
 
-    -- Rust
-    use {'rust-lang/rust.vim'}
+        use {
+            "Pocco81/TrueZen.nvim",
+            cmd = {
+                "TZAtaraxis",
+                "TZMinimalist",
+                "TZFocus"
+            },
+            config = function()
+                require "config.zenmode"
+            end
+        }
 
-    -- Go
-    use {'fatih/vim-go', run = ':GoUpdateBinaries'}
+        use {
+            "lukas-reineke/indent-blankline.nvim",
+            event = "BufRead",
+            setup = function()
+                require("config.others").blankline()
+            end
+        }
 
-    -- Misc
-    use {'npxbr/glow.nvim', run = ':GlowInstall'}
-    use {'romgrk/barbar.nvim'}
-    use {'hashivim/vim-terraform'}
-    use {'ggandor/lightspeed.nvim'}
-    use {'jjo/vim-cue'}
-    use {'towolf/vim-helm'}
-    use {'itkq/fluentd-vim'}
+        use {
+            "aserowy/tmux.nvim",
+            config = function()
+                require("tmux").setup({
+                    navigation = {
+                        enable_default_keybindings = true,
+                    },
+                    resize = {
+                        enable_default_keybindings = true,
+                    }
+                })
+            end
+        }
 
-    -- Orgmode
-    use {'kristijanhusak/orgmode.nvim',
-        config = function()
-            require('orgmode').setup({
-                org_agenda_files = {'~/Dropbox/org/*', '~/my-orgs/**/*'},
-                org_default_notes_file = '~/Dropbox/org/refile.org',
-            })
-        end
-    }
-end)
+        use {
+            'TimUntersberger/neogit',
+            after = "plenary.nvim",
+            event = "BufRead",
+            config = function()
+              require("config.neogit")
+            end
+        }
+    end
+)

@@ -147,6 +147,7 @@ alias la="exa -lha --icons --git"
 alias lr="exa -lh --icons --git --tree"
 alias k="kubectl"
 alias argocd="argocd --grpc-web"
+alias kcc="kubectl config current-context"
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"
