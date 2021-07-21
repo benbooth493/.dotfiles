@@ -122,15 +122,8 @@ return packer.startup(
             end
         }
 
-        use {
-            "nvim-lua/plenary.nvim",
-            event = "BufRead"
-        }
-
-        use {
-            "nvim-lua/popup.nvim",
-            after = "plenary.nvim"
-        }
+        use { "nvim-lua/plenary.nvim" }
+        use { "nvim-lua/popup.nvim" }
 
         use {
             "nvim-telescope/telescope.nvim",

@@ -31,7 +31,7 @@ vim.cmd("let &fcs='eob: '")
 -- Numbers
 opt.number = true
 opt.numberwidth = 2
--- opt.relativenumber = true
+opt.relativenumber = true
 
 -- Indenline
 opt.expandtab = true
