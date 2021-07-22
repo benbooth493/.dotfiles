@@ -26,9 +26,6 @@ vim.api.nvim_set_keymap("t", "jk", "<esc>", {})
 -- Don't copy the replaced text after pasting in visual mode
 map("v", "p", '"_dP', opt)
 
--- copy whole file content
-map("n", "<C-a>", [[ <Cmd> %y+<CR>]], opt)
-
 -- Truezen.nvim
 map("n", "<leader>zz", ":TZAtaraxis<CR>", opt)
 map("n", "<leader>zm", ":TZMinimalist<CR>", opt)

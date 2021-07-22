@@ -39,24 +39,25 @@ gls.left[3] = {
     }
 }
 
+-- gls.left[4] = {
+--     current_dir = {
+--         provider = function()
+--             local dir_name = vim.fn.fnamemodify(vim.fn.getcwd(), ":t")
+--             return "  " .. dir_name .. " "
+--         end,
+--         highlight = {colors.grey_fg2, colors.lightbg2},
+--         separator = " ",
+--         separator_highlight = {colors.lightbg2, colors.statusline_bg}
+--     }
+-- }
+
 gls.left[4] = {
     FileName = {
         provider = {"FileName"},
         condition = condition.buffer_not_empty,
         highlight = {colors.white, colors.lightbg},
         separator = " ",
-        separator_highlight = {colors.lightbg, colors.lightbg2}
-    }
-}
-
-gls.left[5] = {
-    current_dir = {
-        provider = function()
-            local dir_name = vim.fn.fnamemodify(vim.fn.getcwd(), ":t")
-            return "  " .. dir_name .. " "
-        end,
-        highlight = {colors.grey_fg2, colors.lightbg2},
-        separator = " ",
+        -- separator_highlight = {colors.lightbg, colors.lightbg2}
         separator_highlight = {colors.lightbg2, colors.statusline_bg}
     }
 }
