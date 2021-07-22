@@ -228,5 +228,10 @@ return packer.startup(
               require("config.neogit")
             end
         }
+
+        use {
+            "npxbr/glow.nvim",
+            run = "GlowInstall"
+        }
     end
 )
