@@ -238,7 +238,16 @@ return packer.startup(
             "liuchengxu/vista.vim",
             config = function()
                     vim.g.vista_default_executive = "nvim_lsp"
-            end,
-          }
+            end
+        }
+
+        use {
+            "psliwka/vim-smoothie",
+            config = function()
+                vim.g.smoothie_experimental_mappings = true
+            end
+        }
+
+        use { "lambdalisue/gina.vim" }
     end
 )
