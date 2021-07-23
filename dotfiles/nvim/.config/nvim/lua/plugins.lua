@@ -233,5 +233,12 @@ return packer.startup(
             "npxbr/glow.nvim",
             run = "GlowInstall"
         }
+
+        use {
+            "liuchengxu/vista.vim",
+            config = function()
+                    vim.g.vista_default_executive = "nvim_lsp"
+            end,
+          }
     end
 )
