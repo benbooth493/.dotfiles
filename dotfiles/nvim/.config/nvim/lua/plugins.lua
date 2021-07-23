@@ -139,6 +139,14 @@ return packer.startup(
             cmd = "Telescope"
         }
 
+        use {
+            "nvim-telescope/telescope-github.nvim",
+            after = "telescope.nvim",
+            config = function()
+              require('telescope').load_extension('gh')
+            end
+        }
+
         -- git stuff
         use {
             "lewis6991/gitsigns.nvim",
@@ -237,7 +245,7 @@ return packer.startup(
         use {
             "liuchengxu/vista.vim",
             config = function()
-                    vim.g.vista_default_executive = "nvim_lsp"
+                vim.g.vista_default_executive = "nvim_lsp"
             end
         }
 

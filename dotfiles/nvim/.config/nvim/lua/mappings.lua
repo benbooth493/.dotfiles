@@ -8,16 +8,6 @@ end
 
 local opt = {}
 
--- dont copy any deleted text , this is disabled by default so uncomment the below mappings if you want them
---[[ remove this line
-
-map("n", "dd", [=[ "_dd ]=], opt)
-map("v", "dd", [=[ "_dd ]=], opt)
-map("v", "x", [=[ "_x ]=], opt)
-
- this line too ]]
---
-
 -- escape with 'jk' mapping
 vim.api.nvim_set_keymap("i", "jk", "<esc>", {})
 vim.api.nvim_set_keymap("v", "jk", "<esc>", {})
@@ -104,7 +94,6 @@ map("n", "<C-n>", ":NvimTreeToggle<CR>", opt)
 -- format code
 map("n", "<Leader>fm", [[<Cmd> Neoformat<CR>]], opt)
 
-map("n", "<Leader>fg", [[<Cmd> Telescope live_grep<CR>]], opt)
 
 -- Telescope
 map("n", "<Leader>gt", [[<Cmd> Telescope git_status <CR>]], opt)
@@ -113,6 +102,9 @@ map("n", "<Leader>ff", [[<Cmd> Telescope find_files <CR>]], opt)
 map("n", "<Leader>fb", [[<Cmd>Telescope buffers<CR>]], opt)
 map("n", "<Leader>fh", [[<Cmd>Telescope help_tags<CR>]], opt)
 map("n", "<Leader>fo", [[<Cmd>Telescope oldfiles<CR>]], opt)
+map("n", "<Leader>fg", [[<Cmd> Telescope live_grep<CR>]], opt)
+map("n", "<Leader>ghi","[[<Cmd> Telescope gh issues<CR>]]", opt)
+map("n", "<Leader>ghp","[[<Cmd> Telescope gh pull_request<CR>]]", opt)
 
 -- bufferline tab stuff
 map("n", "<S-t>", ":tabnew<CR>", opt) -- new tab

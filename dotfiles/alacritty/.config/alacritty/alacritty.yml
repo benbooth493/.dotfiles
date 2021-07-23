@@ -22,18 +22,18 @@ scrolling:
 
 font:
   normal:
-    family: "FiraCode Nerd Font Mono"
-    style: Light
+    family: "Iosevka Nerd Font Mono"
+    style: Extralight
   bold:
-    family: "FiraCode Nerd Font Mono"
-    style: Light
+    family: "Iosevka Nerd Font Mono"
+    style: Extralight
   italic:
-    family: "FiraCode Nerd Font Mono"
-    style: Light
+    family: "Iosevka Nerd Font Mono"
+    style: Extralight
   bold_italic:
-    family: "FiraCode Nerd Font Mono"
-    style: Light
-  size: 20.0
+    family: "Iosevka Nerd Font Mono"
+    style: Extralight
+  size: 22.0
   offset:
     x: 0
     y: 0
