@@ -104,7 +104,7 @@ map("n", "<C-n>", ":NvimTreeToggle<CR>", opt)
 -- format code
 map("n", "<Leader>fm", [[<Cmd> Neoformat<CR>]], opt)
 
-map("n", "<Leader>fw", [[<Cmd> Telescope live_grep<CR>]], opt)
+map("n", "<Leader>fg", [[<Cmd> Telescope live_grep<CR>]], opt)
 
 -- Telescope
 map("n", "<Leader>gt", [[<Cmd> Telescope git_status <CR>]], opt)
