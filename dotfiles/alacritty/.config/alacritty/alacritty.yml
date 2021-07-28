@@ -22,16 +22,16 @@ scrolling:
 
 font:
   normal:
-    family: "FiraCode Nerd Font Mono"
+    family: "BlexMono Nerd Font Mono"
     style: Light
   bold:
-    family: "FiraCode Nerd Font Mono"
+    family: "BlexMono Nerd Font Mono"
     style: Light
   italic:
-    family: "FiraCode Nerd Font Mono"
+    family: "BlexMono Nerd Font Mono"
     style: Light
   bold_italic:
-    family: "FiraCode Nerd Font Mono"
+    family: "BlexMono Nerd Font Mono"
     style: Light
   size: 22.0
   offset:
