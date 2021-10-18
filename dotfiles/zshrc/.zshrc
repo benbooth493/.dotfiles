@@ -129,8 +129,6 @@ bindkey -M vicmd 'j' history-substring-search-down
 source <(kubectl completion zsh)
 fpath=($fpath $HOME/.zsh/completion)
 
-source <(flux completion zsh)
-
 if [[ -f /usr/local/share/chtf/chtf.sh ]]; then
     source /usr/local/share/chtf/chtf.sh
 fi
@@ -139,6 +137,7 @@ export FZF_DEFAULT_COMMAND="rg --files-with-matches --hidden '.' --glob '!.git'"
 [ -f $HOME/.fzf.zsh ] && source $HOME/.fzf.zsh
 
 alias vim="nvim"
+alias vim="lvim"
 alias tree="tree -C"
 alias cat="bat --plain --pager=never"
 alias ls="exa --icons --git"
@@ -148,6 +147,7 @@ alias lr="exa -lh --icons --git --tree"
 alias k="kubectl"
 alias argocd="argocd --grpc-web"
 alias kcc="kubectl config current-context"
+alias docker="nerdctl"
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"
@@ -163,4 +163,7 @@ export PATH="$HOME/.poetry/bin:$PATH"
 
 export PATH=$HOME/.config/nvcode/utils/bin:$PATH
 eval "$(rbenv init -)"
+
+export PATH=$HOME/.gloo/bin:$PATH
+export PATH=$HOME/.local/bin:$PATH
 

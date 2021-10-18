@@ -10,7 +10,7 @@ if present then
         filetype plugin indent on
     ]])
 
-    base16(base16.themes["onedark"], true)
+    base16(base16.themes.onedark, true)
     require "highlights"
     return true
 else

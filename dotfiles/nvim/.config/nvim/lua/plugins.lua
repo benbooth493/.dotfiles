@@ -30,7 +30,7 @@ return packer.startup(
         }
 
         use {
-          "siduck76/nvim-base16.lua",
+          "norcalli/nvim-base16.lua",
           after = "packer.nvim",
           config = function()
             require "theme"
@@ -76,6 +76,13 @@ return packer.startup(
           event = "BufRead",
           config = function()
             require("config.others").lspkind()
+          end
+        }
+
+        use {
+          "glepnir/lspsaga.nvim",
+          config = function()
+            require "config.lspsaga"
           end
         }
 
