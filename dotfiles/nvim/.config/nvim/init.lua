@@ -1,17 +1,20 @@
-require "options"
-
-local async
-async =
-    vim.loop.new_async(
-    vim.schedule_wrap(
-        function()
-            require "plugins"
-            require "config.bufferline"
-            require "mappings"
-            require("utils").hideStuff()
-
-            async:close()
-        end
-    )
-)
-async:send()
+require("config.plugins")
+require("config.options")
+require("config.keymaps")
+require("config.tmux")
+require("config.colorscheme")
+require("config.treesitter")
+require("config.cmp")
+require("config.gitsigns")
+require("config.comment")
+require("config.nvim-tree")
+require("config.lsp")
+require("config.trouble")
+require("config.autopairs")
+require("config.lualine")
+require("config.telescope")
+require("config.bufferline")
+require("config.indentline")
+require("config.whichkey")
+require("config.autocommands")
+require("config.focus")
