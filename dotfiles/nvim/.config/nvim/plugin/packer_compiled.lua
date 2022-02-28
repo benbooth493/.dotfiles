@@ -119,6 +119,11 @@ _G.packer_plugins = {
     path = "/Users/benbooth/.local/share/nvim/site/pack/packer/start/cmp_luasnip",
     url = "https://github.com/saadparwaiz1/cmp_luasnip"
   },
+  ["fidget.nvim"] = {
+    loaded = true,
+    path = "/Users/benbooth/.local/share/nvim/site/pack/packer/start/fidget.nvim",
+    url = "https://github.com/j-hui/fidget.nvim"
+  },
   ["focus.nvim"] = {
     loaded = true,
     path = "/Users/benbooth/.local/share/nvim/site/pack/packer/start/focus.nvim",
@@ -143,6 +148,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/benbooth/.local/share/nvim/site/pack/packer/start/indent-blankline.nvim",
     url = "https://github.com/lukas-reineke/indent-blankline.nvim"
+  },
+  ["lightspeed.nvim"] = {
+    loaded = true,
+    path = "/Users/benbooth/.local/share/nvim/site/pack/packer/start/lightspeed.nvim",
+    url = "https://github.com/ggandor/lightspeed.nvim"
   },
   ["lualine.nvim"] = {
     loaded = true,
@@ -204,11 +214,6 @@ _G.packer_plugins = {
     path = "/Users/benbooth/.local/share/nvim/site/pack/packer/start/nvim-web-devicons",
     url = "https://github.com/kyazdani42/nvim-web-devicons"
   },
-  ["onedark.nvim"] = {
-    loaded = true,
-    path = "/Users/benbooth/.local/share/nvim/site/pack/packer/start/onedark.nvim",
-    url = "https://github.com/navarasu/onedark.nvim"
-  },
   ["packer.nvim"] = {
     loaded = true,
     path = "/Users/benbooth/.local/share/nvim/site/pack/packer/start/packer.nvim",
@@ -234,10 +239,10 @@ _G.packer_plugins = {
     path = "/Users/benbooth/.local/share/nvim/site/pack/packer/start/telescope.nvim",
     url = "https://github.com/nvim-telescope/telescope.nvim"
   },
-  ["tmux.nvim"] = {
+  ["toggleterm.nvim"] = {
     loaded = true,
-    path = "/Users/benbooth/.local/share/nvim/site/pack/packer/start/tmux.nvim",
-    url = "https://github.com/aserowy/tmux.nvim"
+    path = "/Users/benbooth/.local/share/nvim/site/pack/packer/start/toggleterm.nvim",
+    url = "https://github.com/akinsho/toggleterm.nvim"
   },
   ["trouble.nvim"] = {
     loaded = true,
@@ -249,20 +254,25 @@ _G.packer_plugins = {
     path = "/Users/benbooth/.local/share/nvim/site/pack/packer/start/vim-bbye",
     url = "https://github.com/moll/vim-bbye"
   },
+  ["vim-kitty-navigator"] = {
+    loaded = true,
+    path = "/Users/benbooth/.local/share/nvim/site/pack/packer/start/vim-kitty-navigator",
+    url = "https://github.com/knubie/vim-kitty-navigator"
+  },
   ["vim-surround"] = {
     loaded = true,
     path = "/Users/benbooth/.local/share/nvim/site/pack/packer/start/vim-surround",
     url = "https://github.com/tpope/vim-surround"
   },
-  ["vim-tidal"] = {
-    loaded = true,
-    path = "/Users/benbooth/.local/share/nvim/site/pack/packer/start/vim-tidal",
-    url = "https://github.com/tidalcycles/vim-tidal"
-  },
   ["which-key.nvim"] = {
     loaded = true,
     path = "/Users/benbooth/.local/share/nvim/site/pack/packer/start/which-key.nvim",
     url = "https://github.com/folke/which-key.nvim"
+  },
+  ["yode-nvim"] = {
+    loaded = true,
+    path = "/Users/benbooth/.local/share/nvim/site/pack/packer/start/yode-nvim",
+    url = "https://github.com/hoschi/yode-nvim"
   }
 }
 
@@ -272,5 +282,6 @@ if should_profile then save_profiles() end
 end)
 
 if not no_errors then
+  error_msg = error_msg:gsub('"', '\\"')
   vim.api.nvim_command('echohl ErrorMsg | echom "Error in packer_compiled: '..error_msg..'" | echom "Please check your config for correctness" | echohl None')
 end

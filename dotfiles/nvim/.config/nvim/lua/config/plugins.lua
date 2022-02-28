@@ -51,16 +51,19 @@ return packer.startup(function(use)
 	use("akinsho/bufferline.nvim")
 	use("moll/vim-bbye")
 	use("nvim-lualine/lualine.nvim")
+	-- use("feline-nvim/feline.nvim")
 	use("lewis6991/impatient.nvim")
 	use("lukas-reineke/indent-blankline.nvim")
 	use("antoinemadec/FixCursorHold.nvim") -- This is needed to fix lsp doc highlight
 	use("folke/which-key.nvim")
 	use("rcarriga/nvim-notify")
-	use("aserowy/tmux.nvim")
 	use("beauwilliams/focus.nvim")
+	use("tpope/vim-surround")
+	use("ggandor/lightspeed.nvim")
+
+	use("knubie/vim-kitty-navigator")
 
 	-- Colorschemes
-	use("navarasu/onedark.nvim")
 	use({
 		"catppuccin/nvim",
 		as = "catppuccin",
@@ -83,6 +86,7 @@ return packer.startup(function(use)
 	use("williamboman/nvim-lsp-installer") -- simple to use language server installer
 	use("tamago324/nlsp-settings.nvim") -- language server settings defined in json for
 	use("jose-elias-alvarez/null-ls.nvim") -- for formatters and linters
+	use("j-hui/fidget.nvim")
 
 	use({
 		"folke/trouble.nvim",
@@ -105,10 +109,9 @@ return packer.startup(function(use)
 
 	-- Git
 	use("lewis6991/gitsigns.nvim")
+	use("akinsho/toggleterm.nvim")
 
-	use("tpope/vim-surround")
-
-	use("tidalcycles/vim-tidal")
+	use("hoschi/yode-nvim")
 
 	-- Automatically set up your configuration after cloning packer.nvim
 	-- Put this at the end after all plugins
