@@ -111,12 +111,7 @@ return packer.startup(function(use)
 	use("akinsho/toggleterm.nvim")
 
 	-- Really smart increment/decrement
-	use({
-		"zegervdv/nrpattern.nvim",
-		config = function()
-			require("nrpattern").setup()
-		end,
-	})
+	use("zegervdv/nrpattern.nvim")
 
 	use({
 		"sudormrfbin/cheatsheet.nvim",
