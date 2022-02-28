@@ -60,7 +60,6 @@ return packer.startup(function(use)
 	use("beauwilliams/focus.nvim")
 	use("tpope/vim-surround")
 	use("ggandor/lightspeed.nvim")
-
 	use("knubie/vim-kitty-navigator")
 
 	-- Colorschemes
@@ -111,7 +110,33 @@ return packer.startup(function(use)
 	use("lewis6991/gitsigns.nvim")
 	use("akinsho/toggleterm.nvim")
 
-	use("hoschi/yode-nvim")
+	-- Really smart increment/decrement
+	use({
+		"zegervdv/nrpattern.nvim",
+		config = function()
+			require("nrpattern").setup()
+		end,
+	})
+
+	use({
+		"sudormrfbin/cheatsheet.nvim",
+		requires = {
+			{ "nvim-telescope/telescope.nvim" },
+			{ "nvim-lua/popup.nvim" },
+			{ "nvim-lua/plenary.nvim" },
+		},
+	})
+
+	-- Annotations
+	use({
+		"danymat/neogen",
+		config = function()
+			require("neogen").setup({})
+		end,
+		requires = "nvim-treesitter/nvim-treesitter",
+		-- Uncomment next line if you want to follow only stable versions
+		-- tag = "*"
+	})
 
 	-- Automatically set up your configuration after cloning packer.nvim
 	-- Put this at the end after all plugins
