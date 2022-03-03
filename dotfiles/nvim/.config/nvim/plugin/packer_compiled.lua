@@ -284,6 +284,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/benbooth/.local/share/nvim/site/pack/packer/start/which-key.nvim",
     url = "https://github.com/folke/which-key.nvim"
+  },
+  ["zettelkasten.nvim"] = {
+    loaded = true,
+    path = "/Users/benbooth/.local/share/nvim/site/pack/packer/start/zettelkasten.nvim",
+    url = "https://github.com/Furkanzmc/zettelkasten.nvim"
   }
 }
 
