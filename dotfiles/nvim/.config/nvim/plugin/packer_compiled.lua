@@ -154,10 +154,10 @@ _G.packer_plugins = {
     path = "/Users/benbooth/.local/share/nvim/site/pack/packer/start/indent-blankline.nvim",
     url = "https://github.com/lukas-reineke/indent-blankline.nvim"
   },
-  ["lightspeed.nvim"] = {
+  ["leap.nvim"] = {
     loaded = true,
-    path = "/Users/benbooth/.local/share/nvim/site/pack/packer/start/lightspeed.nvim",
-    url = "https://github.com/ggandor/lightspeed.nvim"
+    path = "/Users/benbooth/.local/share/nvim/site/pack/packer/start/leap.nvim",
+    url = "https://github.com/ggandor/leap.nvim"
   },
   ["lualine.nvim"] = {
     loaded = true,
@@ -275,6 +275,11 @@ _G.packer_plugins = {
     path = "/Users/benbooth/.local/share/nvim/site/pack/packer/start/vim-kitty-navigator",
     url = "https://github.com/knubie/vim-kitty-navigator"
   },
+  ["vim-repeat"] = {
+    loaded = true,
+    path = "/Users/benbooth/.local/share/nvim/site/pack/packer/start/vim-repeat",
+    url = "https://github.com/tpope/vim-repeat"
+  },
   ["vim-surround"] = {
     loaded = true,
     path = "/Users/benbooth/.local/share/nvim/site/pack/packer/start/vim-surround",
@@ -284,11 +289,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/benbooth/.local/share/nvim/site/pack/packer/start/which-key.nvim",
     url = "https://github.com/folke/which-key.nvim"
-  },
-  ["zettelkasten.nvim"] = {
-    loaded = true,
-    path = "/Users/benbooth/.local/share/nvim/site/pack/packer/start/zettelkasten.nvim",
-    url = "https://github.com/Furkanzmc/zettelkasten.nvim"
   }
 }
 

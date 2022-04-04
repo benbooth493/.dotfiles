@@ -51,7 +51,6 @@ return packer.startup(function(use)
 	use("akinsho/bufferline.nvim")
 	use("moll/vim-bbye")
 	use("nvim-lualine/lualine.nvim")
-	-- use("feline-nvim/feline.nvim")
 	use("lewis6991/impatient.nvim")
 	use("lukas-reineke/indent-blankline.nvim")
 	use("antoinemadec/FixCursorHold.nvim") -- This is needed to fix lsp doc highlight
@@ -59,7 +58,7 @@ return packer.startup(function(use)
 	use("rcarriga/nvim-notify")
 	use("beauwilliams/focus.nvim")
 	use("tpope/vim-surround")
-	use("ggandor/lightspeed.nvim")
+	use("ggandor/leap.nvim")
 	use("knubie/vim-kitty-navigator")
 
 	-- Colorschemes
@@ -133,7 +132,7 @@ return packer.startup(function(use)
 		-- tag = "*"
 	})
 
-	use("Furkanzmc/zettelkasten.nvim")
+	use("tpope/vim-repeat")
 
 	-- Automatically set up your configuration after cloning packer.nvim
 	-- Put this at the end after all plugins

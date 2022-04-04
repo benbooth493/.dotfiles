@@ -90,6 +90,10 @@ local mappings = {
 	["h"] = { "<cmd>nohlsearch<CR>", "No Highlight" },
 	["f"] = { "<cmd>Telescope find_files theme=ivy<cr>", "Find files" },
 	["F"] = { "<cmd>Telescope live_grep theme=ivy<cr>", "Find Text" },
+	o = {
+		name = "Focus",
+		t = { "<cmd>FocusToggle<cr>", "Toggle" },
+	},
 	p = {
 		name = "Packer",
 		c = { "<cmd>PackerCompile<cr>", "Compile" },
