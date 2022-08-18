@@ -1,4 +1,15 @@
 local config = {
+	updater = {
+		remote = "origin",
+		channel = "nightly", -- "stable" or "nightly"
+		version = "latest",
+		branch = "main",
+		commit = nil,
+		pin_plugins = nil,
+		skip_prompts = false,
+		show_changelog = true,
+	},
+
 	options = {
 		opt = {
 			relativenumber = true,
@@ -6,6 +17,8 @@ local config = {
 		},
 		g = {
 			mapleader = " ",
+			tokyonight_style = "night",
+			tokyonight_italic_functions = true,
 		},
 	},
 
@@ -14,31 +27,11 @@ local config = {
 		telescope_select = true,
 	},
 
+	colorscheme = "tokyonight",
+
 	plugins = {
 		init = {
-			{
-				"sainnhe/sonokai",
-				config = function()
-					vim.g.sonokai_style = "andromeda"
-					vim.g.sonokai_enable_italic = 0
-					vim.g.sonokai_better_performance = 1
-					vim.g.sonokai_diagnostic_text_highlight = 1
-					vim.cmd("colorscheme sonokai")
-				end,
-			},
-
-			{
-				"ray-x/lsp_signature.nvim",
-				event = "BufRead",
-				config = function()
-					require("lsp_signature").setup({
-						bind = true,
-						handler_opts = {
-							border = "rounded",
-						},
-					})
-				end,
-			},
+			{ "folke/tokyonight.nvim" },
 
 			{ "knubie/vim-kitty-navigator" },
 
@@ -61,10 +54,36 @@ local config = {
 			{ "towolf/vim-helm" },
 
 			{
-				"s1n7ax/nvim-window-picker",
-				tag = "v1.*",
+				"abecodes/tabout.nvim",
+				opt = true,
+				want = { "nvim-treesitter" },
+				after = { "nvim-cmp" },
 				config = function()
-					require("window-picker").setup()
+					require("tabout").setup({
+						completion = false,
+						ignore_beginning = false,
+					})
+				end,
+			},
+
+			{
+				"AckslD/nvim-trevJ.lua",
+				config = function()
+					require("trevj").setup()
+				end,
+				module = "trevj",
+				setup = function()
+					vim.keymap.set("n", ",j", function()
+						require("trevj").format_at_cursor()
+					end)
+				end,
+				disable = false,
+			},
+
+			{
+				"dbinagi/nomodoro",
+				config = function()
+					require("nomodoro").setup({})
 				end,
 			},
 		},
@@ -80,10 +99,8 @@ local config = {
 				null_ls.builtins.formatting.golines,
 				null_ls.builtins.formatting.terraform_fmt,
 				null_ls.builtins.formatting.eslint_d,
+				null_ls.builtins.formatting.dart_format,
 
-				null_ls.builtins.code_actions.shellcheck,
-
-				null_ls.builtins.diagnostics.checkmake,
 				null_ls.builtins.diagnostics.flake8,
 				null_ls.builtins.diagnostics.gitlint,
 				null_ls.builtins.diagnostics.golangci_lint,
@@ -91,11 +108,7 @@ local config = {
 				null_ls.builtins.diagnostics.jsonlint,
 				null_ls.builtins.diagnostics.luacheck,
 				null_ls.builtins.diagnostics.markdownlint,
-				null_ls.builtins.diagnostics.mdl,
-				null_ls.builtins.diagnostics.revive,
-				null_ls.builtins.diagnostics.selene,
 				null_ls.builtins.diagnostics.shellcheck,
-				null_ls.builtins.diagnostics.sqlfluff.with({ extra_args = { "--dialect", "postgres" } }),
 				null_ls.builtins.diagnostics.staticcheck,
 				null_ls.builtins.diagnostics.tsc,
 				null_ls.builtins.diagnostics.yamllint,
@@ -122,6 +135,7 @@ local config = {
 				"yaml",
 				"json",
 				"hcl",
+				"bash",
 			},
 		},
 
@@ -132,6 +146,7 @@ local config = {
 				"yamlls",
 				"jsonls",
 				"tsserver",
+				"terraformls",
 			},
 		},
 
@@ -144,25 +159,85 @@ local config = {
 				indicator_icon = " ",
 			},
 		},
-		lualine = {
-			options = {
-				theme = "sonokai",
-			},
-		},
+
+		feline = function(config)
+			local status = require("core.status")
+			local hl = status.hl
+			local provider = status.provider
+			local conditional = status.conditional
+			local C = require("default_theme.colors")
+
+			config.components = {
+				active = {
+					{ -- LEFT SECTION
+						{ provider = { name = "file_info", opts = { type = "relative-short" } } },
+						{ provider = provider.spacer(1) },
+						{
+							provider = "git_branch",
+							hl = hl.fg("Conditional", { fg = C.purple_1, style = "bold" }),
+							icon = " ",
+						},
+						{ provider = provider.spacer(1), enabled = conditional.git_available },
+						{ provider = "git_diff_added", hl = hl.fg("GitSignsAdd", { fg = C.green }), icon = "  " },
+						{
+							provider = "git_diff_changed",
+							hl = hl.fg("GitSignsChange", { fg = C.orange_1 }),
+							icon = " 柳",
+						},
+						{
+							provider = "git_diff_removed",
+							hl = hl.fg("GitSignsDelete", { fg = C.red_1 }),
+							icon = "  ",
+						},
+						{ provider = provider.spacer(1), enabled = conditional.git_changed },
+						{
+							provider = "diagnostic_errors",
+							hl = hl.fg("DiagnosticError", { fg = C.red_1 }),
+							icon = "  ",
+						},
+						{
+							provider = "diagnostic_warnings",
+							hl = hl.fg("DiagnosticWarn", { fg = C.orange_1 }),
+							icon = "  ",
+						},
+						{
+							provider = "diagnostic_info",
+							hl = hl.fg("DiagnosticInfo", { fg = C.white_2 }),
+							icon = "  ",
+						},
+						{
+							provider = "diagnostic_hints",
+							hl = hl.fg("DiagnosticHint", { fg = C.yellow_1 }),
+							icon = "  ",
+						},
+					},
+					{ -- RIGHT SECTION
+						{
+							provider = function()
+								return tostring(require("nomodoro").status())
+							end,
+						},
+						{ provider = provider.lsp_progress, enabled = conditional.bar_width() },
+						{ provider = "lsp_client_names", enabled = conditional.bar_width(), icon = "   " },
+						{ provider = provider.spacer(1), enabled = conditional.bar_width() },
+						{
+							provider = provider.treesitter_status,
+							enabled = conditional.bar_width(),
+							hl = hl.fg("GitSignsAdd", { fg = C.green }),
+						},
+						{ provider = provider.spacer(1) },
+						{ provider = "position" },
+					},
+				},
+			}
+			return config
+		end,
 	},
 
 	luasnip = {
 		vscode_snippet_paths = {},
 		filetype_extend = {
 			javascript = { "javascriptreact" },
-		},
-	},
-
-	["which-key"] = {
-		register_n_leader = {
-			f = {
-				e = { "<cmd>Telescope symbols<cr>", "Emojis" },
-			},
 		},
 	},
 
@@ -197,13 +272,20 @@ local config = {
 
 	diagnostics = {
 		virtual_text = true,
+		virtual_lines = false,
 		underline = true,
 	},
 
 	polish = function()
+		local map = vim.api.nvim_set_keymap
+
+		map("n", "<leader>D", ":Telescope lsp_type_definitions<cr>", { desc = "Find type definitions" })
+		map("n", "<leader>faf", ":Telescope find_files hidden=true no_ignore=true<cr>", { desc = "Find hidden files" })
+
 		vim.keymap.set("n", "<C-s>", ":w!<CR>")
 
 		vim.api.nvim_create_augroup("packer_conf", { clear = true })
+
 		vim.api.nvim_create_autocmd("BufWritePost", {
 			desc = "Sync packer after modifying plugin.lua",
 			group = "packer_conf",
