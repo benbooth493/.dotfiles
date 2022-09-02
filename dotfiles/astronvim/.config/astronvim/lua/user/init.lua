@@ -156,7 +156,9 @@ local config = {
 
 		bufferline = {
 			options = {
-				indicator_icon = " ",
+				indicator = {
+					icon = " ",
+				},
 			},
 		},
 
